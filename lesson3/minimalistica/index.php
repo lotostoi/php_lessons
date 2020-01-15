@@ -1,6 +1,6 @@
 <?php
 $title = 'Php lesson1';
-$h1 = 'Hello PHP'." ". date('o');
+$h1 = 'Hello PHP!' . " " . date('o');
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -18,11 +18,53 @@ $h1 = 'Hello PHP'." ". date('o');
 	<div id="content">
 		<h1> <?php echo $h1 ?></h1>
 
-		<ul id="menu">
-			<li><a href="#">home</a></li>
-			<li><a href="#">archive</a></li>
-			<li><a href="#">contact</a></li>
-		</ul>
+		<?php
+		/* 6. В имеющемся шаблоне сайта заменить статичное меню (ul - li) 
+		на генерируемое через PHP. Необходимо представить пункты меню как
+		элементы массива и вывести их циклом. Подумать, как можно реализовать 
+		меню с вложенными подменю? Попробовать его реализовать. */
+		$menu = [
+			'home' => ['About us', 'Our projects', 'Reviews'],
+			'archive' => ['2018', '2017', '2016', '2015'],
+			'contact' => ['Our contacts', 'Our partners'],
+		];
+
+		$ulMenu = '<ul id="menu">';
+		foreach ($menu as $key => $val) {
+			$ulMenu .= "<li>  $key <ul class='dropMenu'>";
+			foreach ($val as $link) {
+				$ulMenu .= "<li class='dropli'><a class='link' href='#'> $link </a></li>";
+			}
+			$ulMenu .= " </ul> </li>";
+		}
+		$ulMenu .= " </ul> ";
+		$ulMenu .= '</ul>';
+		echo $ulMenu
+
+		?>
+
+		<!-- 		<ul id="menu">
+			<li data-id = "home">home
+				<ul class="dropMenu">
+					<li class="dropli"><a class="link" href="#"> About us </a></li>
+					<li class="dropli"><a class="link" href="#"> Our projects </a></li>
+					<li class="dropli"><a class="link" href="#"> Reviews </a></li>
+				</ul>
+			</li>
+
+			<li data-id = "archive">archive
+				<ul class="dropMenu">	
+					<li class="dropli"><a class="link" href="#"> 2018 </a></li>
+					<li class="dropli"><a class="link" href="#"> 2017 </a></li>
+					<li class="dropli"><a class="link" href="#"> 2016 </a></li>
+				</ul>
+			</li>
+			<li data-id = "contact">contact
+				<ul class="dropMenu">	
+					<li class="dropli"><a class="link" href="#"> Our contacts </a></li>
+				</ul>
+			</li> 
+		</ul> -->
 
 		<div class="post">
 			<div class="details">
@@ -53,7 +95,7 @@ $h1 = 'Hello PHP'." ". date('o');
 		</div>
 
 		<div id="footer">
-			<p>Copyright &copy; <em>minimalistica</em> &middot; Design: Luka Cvrk, <a href="http://www.solucija.com/" title="Free CSS Templates">Solucija</a></p>
+			<p>Copyright &copy; <em>minimalistica</em> &middot; Design: Luka Cvrk, <a href="http://www.solucija.com/" title="Free CSS Templates">Solucija</a> <span> <?php echo date('Y') ?> </span></p>
 		</div>
 	</div>
 </body>
