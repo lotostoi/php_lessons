@@ -1,24 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-
-<body>
-    <form action="" method="post">
-        <?php
-        error_reporting(0);
-        include "dbinit.php";
-        $nameDB = $_POST['nameDB'];
-        $nameServer = $_POST['serverName'];
-        $nameUser = $_POST['userName'];
-        $password = $_POST['password'];
-        ?>
-
+<form action="" method="post">
+    
         <h3 class="createT__h3">Редактирование таблици</h3>
         <hr>
 
@@ -51,15 +32,12 @@
 
 
         <p> Показать таблицу: <input type="radio" name="show" value="show" class="radio"></p>
-        <p> Запонить пустую таблицу: <input type="radio" name="show" value="build" class="radio"></p>
+        <p> Заполнить пустую таблицу: <input type="radio" name="show" value="build" class="radio"></p>
         <p> Редактировать таблицу: <input type="radio" name="show" value="chenges" class="radio"></p>
 
         <button name="showTabels" class="showTabels"> Выполнить </button>
 
-
-
         <?php
-
 
         if (isset($_POST['showTabels']) && $_POST['show'] == "show") {
 
@@ -82,7 +60,6 @@
                 $form .= "</div>";
                 $i++;
             }
-            // $form .= " <input type='submit' name='сhengeTabel' value='Перезаписать таблицу'>";
             $form .= "";
             echo $form;
 
@@ -90,7 +67,6 @@
         } else {
             echo "<p> Место для вывода таблици </p>";
         }
-
 
         if (isset($_POST['showTabels']) && $_POST['show'] == "build") {
 
@@ -126,11 +102,7 @@
             echo $form;
             mysqli_close($link);
             $_POST['arr'] = $arrFields;
-            
-            print_r($_POST['arr']);
         }
-
-       
 
         if (isset($_POST['сhengeTabel'])) {
             for ($k = 1; $k <= $quantRows; $k++) {
@@ -144,27 +116,23 @@
                 while ($string = mysqli_fetch_assoc($content)) {
                     $arrFields[$i++] = $string['Field'];
                 }
-
+                $resaltStr='';
                 for ($i=0; $i<count($arrFields); $i++) {        
                     $str = $arrFields[$i] . "-" .$k; 
-                    $resalt[$i] =  $_POST["$str"];
+                    $partStr =  $_POST["$str"];
+                    if ($i != count($arrFields)-1) {
+                        $resaltStr .= "'".$partStr ."'," ; 
+                    }else {
+                        $resaltStr .= "'".$partStr ."'" ; 
+                    }     
                 } 
-           
-                
-                echo $newSrt;
-                $resp = "INSERT INTO $nameT VALUES ( '$resalt[0]','$resalt[1]','$resalt[2]','$resalt[3]','$resalt[4]' )";
-                echo $resp ."<hr>";
+                   
+                $resp = "INSERT INTO $nameT VALUES ( $resaltStr )";
                 $ress = mysqli_query($link,$resp) or die (mysqli_error($link));
+                echo "Данные занесены в таблицу"; 
                 mysqli_close($link);
             }
         }
         ?>
 
     </form>
-    <script>
-
-    </script>
-
-</body>
-
-</html>

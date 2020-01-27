@@ -6,12 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <link rel="stylesheet" href="css/main.css" type="text/css" />
     <title>Document</title>
     <link>
 </head>
 
 <body>
     <div class="contener">
+    <header class="header">
+            <h1 class="header__h1"><a href="E-Shop.php?page=main" class="header__a">E-SHOP </a></h1>
+            <ul class="header__ul">
+                <li class="header__li"><a href="E-Shop.php?page=main" class="header__a">Main</a></li>
+                <li class="header__li"><a href="#" class="header__a">Home</a></li>
+                <li class="header__li"><a href="#" class="header__a">About Us</a></li>
+                <li class="header__li"><a href="#" class="header__a">Products</a></li>
+                <li class="header__li"><a href="feedBackForm.php" class="header__a">Reviews</a></li>
+            </ul>
+        </header>
         <form action="#" method="POST" class="writeReview">
             <h1 class="writeReview__h1"> Пожалуйста оставте отзыв о нашем сайте! </h1>
             <label for="#" class="writeReview__user"> Ваше имя:
@@ -31,10 +42,7 @@
         </form>
 
         <section class="reviews">
-
             <?php
-
-            
 
             error_reporting(0);
             $sendReview = $_POST['sendReview'];

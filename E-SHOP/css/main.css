@@ -1,3 +1,7 @@
+body {
+  margin: 0;
+}
+
 .contener {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -78,10 +82,6 @@
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   margin-top: 101px;
@@ -151,12 +151,14 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  min-height: 50vh;
+  min-height: 600px;
   background-color: white;
   -ms-flex-pack: distribute;
       justify-content: space-around;
   padding: 20px;
   border-radius: 10px;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
 }
 
 .imgProduct {

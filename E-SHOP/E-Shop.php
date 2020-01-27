@@ -19,7 +19,7 @@
                 <li class="header__li"><a href="#" class="header__a">Home</a></li>
                 <li class="header__li"><a href="#" class="header__a">About Us</a></li>
                 <li class="header__li"><a href="#" class="header__a">Products</a></li>
-                <li class="header__li"><a href="E-Shop.php?page=reviews" class="header__a">Reviews</a></li>
+                <li class="header__li"><a href="feedBackForm.php" class="header__a">Reviews</a></li>
             </ul>
         </header>
         <section class="cotalog">
@@ -52,23 +52,13 @@
             }     
             if ($_GET['page'] == "main" || !$_GET['page']) {
                 echo $list;
-            }else if ($_GET['page']=="reviews") {
-                require ('reviews.php');
             }
             else {
                 require ('pageProduct.php');
             }
-
-
-
             ?>
- 
 
         </section>
-
-
-
-
     </div>
 
 </body>
