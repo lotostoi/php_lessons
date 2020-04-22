@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <link href="./css/style.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="contener">
+
+            {% include 'header.tmpl' %}
+            {% include 'addpicture.tmpl' %}
+
+            <section class="galary">
+
+                {% include 'gallery.tmpl' %}
+
+                {% include 'modelWind.tmpl' %}
+
+            </section>
+
+        </div>
+
+         {% include 'js.tmpl' %}
+
+    </body>
+
+</html>
