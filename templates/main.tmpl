@@ -12,19 +12,19 @@
         <div class="contener">
 
             {% include 'header.tmpl' %}
-            {% include 'addpicture.tmpl' %}
 
-            <section class="galary">
-
-                {% include 'gallery.tmpl' %}
-
-                {% include 'modelWind.tmpl' %}
-
-            </section>
+            {% if page == 'photo' %}
+                {% include 'bigSizePhoto.tmpl' %}
+            {% else %}
+                {% include 'addpicture.tmpl' %}
+                <section class="galary">
+                    {% include 'gallery.tmpl' %}
+                </section>
+            {% endif %}
 
         </div>
 
-         {% include 'js.tmpl' %}
+        {#   {% include 'js.tmpl' %} #}
 
     </body>
 

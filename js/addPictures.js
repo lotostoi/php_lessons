@@ -18,7 +18,6 @@ let form = document.querySelector('.addpicture')
 
 file.addEventListener('change', () => {
 
-    console.log(file.files[1])
 
     document.querySelector(`input[type='submit']`).style.display = 'block'
     let arr = file.files

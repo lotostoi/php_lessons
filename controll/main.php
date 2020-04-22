@@ -27,6 +27,7 @@ if (isset($_FILES['file'])) {
         mysqli_query($db->link, $db->addOneRow_2(LINKS, null, "./BigImg/" . $new_name_picture . "." . $file_extension));
     }
 
+    //print_r($pictures);
     header("Location:" . "index.php");
 }
 
@@ -36,8 +37,9 @@ $gallery = $db->getArr(LINKS);
 if ($_GET['page'] == "photo") {
     $id_photo = $_GET['id_photo'] - 1;
     $link = $gallery[$id_photo]['linkImg'];
-
-    include './controll/viewBigPhoto.php';
+    $page = 'photo';
+    include './controll/viewMain.php';
 } else {
+    $page ='main';
     include './controll/viewMain.php';
 }
