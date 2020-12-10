@@ -97,13 +97,17 @@
 
         <div class="ts2">
 
-            <h3 class="ts2">Задание №2. Присвоить переменной $а значение в промежутке [0..15].
+            <h3 class="ts2">
+                Присвоить переменной $а значение в промежутке [0..15].
                 С помощью оператора switch организовать вывод чисел от $a до 15.
+                При желании сделайте это задание через рекурсию вторым вариантом.
             </h3>
+
             <form class="f1" action="#">
                 <label for="#">Input value $a <input name="valueATask2" type="text"> </label>
                 <button type="submit" name="rethult"> Вывести значения </button>
             </form>
+
             <?php
             if ($_GET['valueATask2'] != null && $_GET['valueATask2'] >= 0 && $_GET['valueATask2'] < 16) {
                 $a = (int) $_GET['valueATask2'];
@@ -147,11 +151,23 @@
             ?>
         </div>
         <div class="ts3">
-            <h3 class="ts2">Задание №3. Реализовать основные 4 арифметические операции
+            <h3 class="ts2">
+                Задание №3. Реализовать основные 4 арифметические операции
                 в виде функций с двумя параметрами.
                 Обязательно использовать оператор return.
             </h3>
+            
+
             <?php
+
+            /* как такие функции закинуть в switch?
+            $add = fn($a, $b)=> $a + $b;
+        
+            $sub = fn($a, $b)=> $a - $b;
+            
+            $mult= fn($a, $b)=> $a * $b;
+            
+            $div = fn($a, $b)=> $b === 0 ? "Error -  dividing on zero!" :  $a / $b; */
 
             function add($a, $b)
             {
@@ -170,7 +186,7 @@
 
             function div($a, $b)
             {
-                return $a * $b;
+                return $b === 0 ? "Error -  dividing on zero!" :  $a / $b;
             }
             echo '<pre> 
             function add($a, $b)
@@ -190,14 +206,15 @@
             
             function div ($a, $b)
             {
-                return $a * $b;
+                return $b === 0 ? "Error -  dividing on zero!" :  $a / $b;
             }              
             </pre>'
 
             ?>
         </div>
         <div class="ts3">
-            <h3 class="ts2">Задание №4. Реализовать функцию с тремя параметрами: function mathOperation($arg1, $arg2, $operation),
+            <h3 class="ts2">
+                Задание №4. Реализовать функцию с тремя параметрами: function mathOperation($arg1, $arg2, $operation),
                 где $arg1, $arg2 – значения аргументов, $operation – строка с названием операции.
                 В зависимости от переданного значения операции выполнить одну из арифметических операций
                 (использовать функции из пункта 3) и вернуть полученное значение (использовать switch).
@@ -222,6 +239,8 @@
                         return 'err';
                 }
             }
+            echo mathOperation(1,2,'сложение');
+
             echo '<pre> 
             function mathOperation($arg1, $arg2, $operation) {
                 switch ($operation) {
@@ -245,22 +264,42 @@
             ?>
         </div>
         <div class="ts3">
-            <h3 class="ts2"> Задание 6. *С помощью рекурсии организовать функцию возведения числа в степень.
+            <h3 class="ts2">
+                Задание 6. *С помощью рекурсии организовать функцию возведения числа в степень.
                 Формат: function power($val, $pow), где $val – заданное число, $pow – степень.
             </h3>
+            <h5 class="ts2"> Код функции: </h4>
+            <?php
+            echo '<pre> 
+                    function power($val, $pow, $res = 0)
+                    {
+                        $res = $res === 0 ? $val : $res;
+                        if ($pow == 0) {
+                            return 1;
+                        } elseif ($pow == 1) {
+                            return $res;
+                        } else {
+                            $res = $res * $val;
+                            $pow--;
+                            return power($val, $pow, $res);
+                        }
+                    }
+            </pre>'
+            ?>
+
             <form class="f1" action="#">
 
                 <label for="#">Number <input name="number" type="text"> </label>
                 <label for="#">Power <input name="power" type="text"> </label>
-                <button type="submit" name="rethult"> Выполнить задание </button>
+                <button type="submit" name="result"> Выполнить задание </button>
 
             </form>
 
             <?php
-            function power($val, $pow)
-            {
-                function rec($val, $pow, $res)
+
+            function power($val, $pow, $res = 0)
                 {
+                $res = $res === 0 ? $val : $res;
                     if ($pow == 0) {
                         return 1;
                     } elseif ($pow == 1) {
@@ -268,12 +307,11 @@
                     } else {
                         $res = $res * $val;
                         $pow--;
-                        return rec($val, $pow, $res);
-                    }
+                    return power($val, $pow, $res);
                 }
-                $res = $val;
-                return rec($val, $pow, $res);
             }
+
+
             if ($_GET['number'] != null && $_GET['power'] != null) {
                 $val = (int) $_GET['number'];
                 $pow = (int) $_GET['power'];
@@ -294,16 +332,16 @@
             {
                 if ($val == 0 || $val  > 4 && $val <= 20) {
                     ($arg == 'часы') ? $text = ' часов ' : $text = ' минут ';
-                    echo '<span>'. $val . $text . '</span>';
+                    echo '<span>' . $val . $text . '</span>';
                 } elseif ($val % 10 > 1 && $val % 10 < 5) {
                     ($arg == 'часы') ? $text = ' часа ' : $text = ' минуты ';
-                   echo '<span>'. $val . $text . '</span>';
+                    echo '<span>' . $val . $text . '</span>';
                 } elseif ($val % 10 == 0 || ($val % 10) > 4 && ($val % 10) <= 9) {
                     ($arg == 'часы') ? $text = ' часов' : $text = ' минут';
-                   echo '<span>'. $val . $text . '</span>';
+                    echo '<span>' . $val . $text . '</span>';
                 } else {
                     ($arg == 'часы') ? $text = ' час ' : $text = ' минута ';
-                   echo '<span>'. $val . $text . '</span>';
+                    echo '<span>' . $val . $text . '</span>';
                 }
             }
 
@@ -314,8 +352,7 @@
                 echo '<h2 class = "span">';
                  hoursOrMin($hours, "часы"); 
                  hoursOrMin($min, "минуты");
-                echo '</h2>' ;
-
+                echo '</h2>';
             }
 
             printCurrentTime()
