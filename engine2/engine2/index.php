@@ -1,6 +1,6 @@
 <?php
 
-function renderTemlate($page, $fields = [])
+function renderTemlate($page, array $fields = [])
 {
     if (count($fields) > 0) {
         foreach ($fields as $key => $val) {
