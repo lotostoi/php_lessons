@@ -96,35 +96,24 @@ $converter = [
     'ч' => 'ch',  'ш' => 'sh',  'щ' => 'sch',
     'ь' => '',    'ы' => 'y',   'ъ' => '',
     'э' => 'e',   'ю' => 'yu',  'я' => 'ya',
-
-    'А' => 'A',   'Б' => 'B',   'В' => 'V',
-    'Г' => 'G',   'Д' => 'D',   'Е' => 'E',
-    'Ё' => 'E',   'Ж' => 'Zh',  'З' => 'Z',
-    'И' => 'I',   'Й' => 'Y',   'К' => 'K',
-    'Л' => 'L',   'М' => 'M',   'Н' => 'N',
-    'О' => 'O',   'П' => 'P',   'Р' => 'R',
-    'С' => 'S',   'Т' => 'T',   'У' => 'U',
-    'Ф' => 'F',   'Х' => 'H',   'Ц' => 'C',
-    'Ч' => 'Ch',  'Ш' => 'Sh',  'Щ' => 'Sch',
-    'Ь' => '',    'Ы' => 'Y',   'Ъ' => '',
-    'Э' => 'E',   'Ю' => 'Yu',  'Я' => 'Ya',
     ' ' => ' '
+  
 ];
 
 function convert($str, $decoder)
 {
     $newStr = '';
-    $arrString = preg_split('//u', $str, -1, PREG_SPLIT_NO_EMPTY);
-    foreach ($arrString as $val) {
-        foreach ($decoder as $key => $code) {
-            if ($val == $key) {
-                $newStr .= $code;
+    $i = 0;
+    while (mb_strlen($str) >= $i) {
+        foreach ($decoder as $key => $code)
+            if (mb_strtolower(mb_substr($str, $i, 1)) === $key) {
+                $newStr .= mb_substr($str, $i, 1) === mb_strtoupper($key) ? strtoupper($code) : $code;
             }
-        }
+        $i++;
     }
     return $newStr;
 }
-echo convert('Объявить массив, индексами которого являются буквы русского языка', $converter);
+echo convert('Объявить массив, индексами которого являются буквы русского языка,', $converter);
 
 echo '<hr>';
 /* 5. Написать функцию, которая заменяет в строке пробелы
@@ -132,6 +121,10 @@ echo '<hr>';
 echo "<h3>Task 5</h3>";
 $replacement = fn ($simbol, $newSimbol, $str) => str_replace($simbol, $newSimbol, $str);
 echo $replacement(' ', '_', 'Объявить массив, индексами которого являются буквы русского языка');
+echo '<hr>';
+echo "<h3>Task 6</h3>";
+echo " 6. выполненно в файлах header.php и index.php ";
+
 
 echo '<hr>';
 /* 7. *Вывести с помощью цикла for числа от 0 до 9, НЕ используя тело цикла.
@@ -165,4 +158,4 @@ echo '<hr>';
 echo "<h3>Task 9</h3>";
 $converter_ = $converter;
 $converter_[' '] = '_';
-convert('Объявить массив, индексами которого являются буквы русского языка', $converter_);
+echo convert('Объявить массив, индексами которого являются буквы русского языка', $converter_);

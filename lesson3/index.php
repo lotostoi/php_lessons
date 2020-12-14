@@ -31,7 +31,6 @@ switch ($page) {
         break;
 }
 
-
 function renderTemlate($page, array $fields = [])
 {
     extract($fields);
@@ -49,7 +48,5 @@ $fields = [
     'header' => renderTemlate('header',  $menu_params),
     'content' => renderTemlate($page, $content_params)
 ];
-
-
 
 echo renderTemlate('layouts/main', $fields);
