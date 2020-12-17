@@ -9,12 +9,6 @@ function getGallery($images)
 {
     $gallery =  '';
     foreach ($images as  $img) {
-        if (!file_exists(SMALL . $img)) {
-            $image = new SimpleImage();
-            $image->load(BIG . $img);
-            $image->resizeToWidth(250);
-            $image->save(SMALL . $img);
-        }
         $params = [
             'linkToBigImg' => BIG . $img,
             'linkToSmallImg' => SMALL . $img,
