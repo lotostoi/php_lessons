@@ -3,6 +3,9 @@
 include_once "../config/config.php";
 
 $page =  isset($_GET['page']) ? $_GET['page'] : 'index';
+if (strstr($page, '?')) {
+    $page = explode('?', $page)[0];
+}
 
 switch ($page) {
     case 'index':

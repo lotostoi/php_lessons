@@ -1,8 +1,5 @@
-<!--  http://sanchiz.net/blog/resizing-images-with-php  описание работы класса-->
-
 <?php
 class SimpleImage {
-
    var $image;
    var $image_type;
 
