@@ -5,7 +5,7 @@
 
 .wrapper {
   width: 100%;
-  max-width: 1100px;
+  max-width: 1400px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -137,8 +137,8 @@
           align-items: center;
   border-radius: 30px;
   border: 1px solid gray;
-  -webkit-transition: opacity .5s;
-  transition: opacity .5s;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
 }
 
 .result_loader > p {
@@ -157,7 +157,7 @@
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
-  background-color: #5a2208;
+  background-color: #050505;
   padding: 20px;
 }
 
