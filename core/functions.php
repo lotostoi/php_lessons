@@ -1,5 +1,4 @@
 <?php
-require_once CORE_FOLDER . "chenge.php";
 
 function renderTemlate($page, array $fields = [])
 {

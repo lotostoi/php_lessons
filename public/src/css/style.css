@@ -147,6 +147,15 @@
   font-size: 1.1rem;
 }
 
+.gallery-cont h1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px;
+  background-color: black;
+  color: white;
+}
+
 .gallery {
   width: 100%;
   display: -webkit-box;

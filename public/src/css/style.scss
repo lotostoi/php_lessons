@@ -93,6 +93,15 @@
   }
 }
 
+.gallery-cont {
+  & h1 {
+    display: flex;
+    padding: 10px;
+    background-color: black;
+    color: white;
+  }
+}
+
 .gallery {
   width: 100%;
   display: flex;

@@ -1,5 +1,4 @@
 <?php
-
 include_once "../config/config.php";
 
 $page =  isset($_GET['page']) ? $_GET['page'] : 'index';
@@ -9,16 +8,21 @@ if (strstr($page, '?')) {
 
 switch ($page) {
     case 'index':
-        $menu_params = ['menu' => $menu];
+        $menu_params = ['menu' => compilateMenu(menu())];
         $content_params = ['title' => 'Главная'];
         break;
     case 'portfolio':
-        $menu_params = ['menu' => $menu];
+        $menu_params = ['menu' => compilateMenu(menu())];
         $content_params = ['title' => 'Портфолио'];
         break;
-    case 'Gallery/gallery':
-        $menu_params = ['menu' => $menu];
-        $content_params = ['title' => 'Домашняя работа'];
+    case 'gallery/main':
+        $result_load = !empty($_FILES) || $_GET['messag'] === 'ok' ? load_content() : null;
+        $menu_params = ['menu' => compilateMenu(menu())];
+        $content_params = [
+            'title' => 'Домашняя работа',
+            'form' => renderTemlate('gallery/loader', ['result_load' => $result_load]),
+            'gallery' => renderTemlate('gallery/gallery', ['gallery' => getgallery()]),
+        ];
         break;
 }
 
