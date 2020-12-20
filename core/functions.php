@@ -8,7 +8,7 @@ function renderTemlate($page, array $fields = [])
     if (file_exists($fileName)) {
         include $fileName;
     } else {
-        echo "Error- template's file '{$fileName}' wasn't founded...";
+        echo "Error - template's file '{$fileName}' wasn't founded...";
     }
     return ob_get_clean();
 }
@@ -21,6 +21,16 @@ function fwrite_stream($fp, $string) {
         }
     }
     return $written;
+}
+function cleanDir($dir) {
+    $files = glob($dir."/*");
+    if (count($files) > 0) {
+        foreach ($files as $file) {      
+            if (file_exists($file)) {
+            unlink($file);
+            }   
+        }
+    }
 }
 
 

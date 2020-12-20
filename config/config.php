@@ -12,6 +12,7 @@ define("HOST", "localhost:3306");
 define("USER", "lotos");
 define("PASS", "XrTA2B2Igm3AzBPR");
 define("DB_NAME", "my_portfolio");
+define("PICTURES", "pictures");
 
 // функция для поключения всех фалов из папки
 include CONFIG . 'include_all.php';
@@ -19,4 +20,4 @@ include CONFIG . 'include_all.php';
 // подключаем все файлы из папки /core
 include_all(CORE);
 
-connect_db();
+

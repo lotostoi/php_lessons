@@ -1,16 +1,16 @@
-<?php 
+<?php
 
 function getgallery()
-{   $images = array_slice(scandir(BIG), 2);
-    sort($images, SORT_NUMERIC | SORT_FLAG_CASE);
-    $gallery =  [];
+{
+    $images = get_db_result("SELECT * FROM " . PICTURES. " ORDER BY namber_of_views DESC");
+    $gallery = [];
     foreach ($images as  $img) {
         $params = [
-            'linkToBigImg' => BIG . $img,
-            'linkToSmallImg' => SMALL . $img,
+            'id' => $img['id'],
+            'linkToBigImg' => BIG . $img['name_and_ext'],
+            'linkToSmallImg' => SMALL . $img['name_and_ext'],
         ];
-       array_push($gallery, $params);
+        array_push($gallery, $params);
     }
     return $gallery;
 }
-

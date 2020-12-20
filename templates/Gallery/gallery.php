@@ -1,7 +1,7 @@
 <div class="gallery">
-    <?php 
+    <?php
     foreach ($gallery as $image) : ?>
-        <a href="<?= $image['linkToBigImg'] ?>" target="_blank" class="gallery__image">
+        <a href="./gallery-picture?id=<?=$image['id']?>"  class="gallery__image">
             <img src="<?= $image['linkToSmallImg'] ?>" alt="name-img">
         </a>
     <?php

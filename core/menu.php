@@ -9,12 +9,12 @@ function menu()
         ],
         [
             'name' => 'portfolio',
-            'href' => './?page=portfolio',
+            'href' => './portfolio',
             'value' => 'Портфолио'
         ],
         [
             'name' => 'gallery',
-            'href' => './?page=gallery/main',
+            'href' => './gallery-main',
             'value' => 'Галерея'
         ]
     ];
