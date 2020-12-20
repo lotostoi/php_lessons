@@ -170,10 +170,14 @@ $f-r: 'Roboto', sans-serif;
   justify-content: flex-end;
   background-color: rgb(7, 7, 7);
   & .img {
-    margin: auto 0;
+    display: flex;
+    margin: auto ;
+    justify-content: center;
     width: 100%;
     & img {
-      width: 100%;
+      margin: auto ;
+      //width: 100%;
+      height: calc(100vh - 129px);
     }
   }
   &__statistic {

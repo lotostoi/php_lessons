@@ -3,8 +3,6 @@ function load_content()
 {
     $result_load = '';
 
-  
-
     if ($_GET['dellAll'] === 'ok') {
         $res = update_db("DELETE FROM " . PICTURES);
         if ($res) {
