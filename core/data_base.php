@@ -11,11 +11,11 @@ function connect_db()
 function get_db_result($request)
 {
     $result = @mysqli_query(connect_db(), $request) or die(mysqli_error(connect_db()));
-    $array_reult = [];
+    $array_result = [];
     while ($row = mysqli_fetch_assoc($result)) {
-        $array_reult[] = $row;
+        $array_result[] = $row;
     }
-    return $array_reult;
+    return $array_result;
 }
 
 function update_db($request)
