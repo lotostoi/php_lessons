@@ -23,3 +23,9 @@ function update_db($request)
     @mysqli_query(connect_db(), $request) or die(mysqli_error(connect_db()));
     return mysqli_affected_rows(connect_db());
 }
+
+
+function protect($val)
+{
+    return strip_tags(htmlspecialchars(mysqli_real_escape_string(connect_db(), $val)));
+}

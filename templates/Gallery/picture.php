@@ -4,6 +4,6 @@
     </div>
 
     <div class="picture__statistic">
-        <span>Namber of views:</span> <span> <?= $image['namber_of_views'] ?></span>
+        <span>number of views:</span> <span> <?= $image['number_of_views'] ?></span>
     </div>
 </div>

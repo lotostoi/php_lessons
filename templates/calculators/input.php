@@ -23,7 +23,7 @@
         if (e.target.tagName === 'INPUT') {
             let data = new FormData(form)
             data.append('operation', e.target.name)
-            let response = await fetch('./server/calculator.php', {
+            let response = await fetch('./calculator', {
                 method: "POST",
                 body: data
             })

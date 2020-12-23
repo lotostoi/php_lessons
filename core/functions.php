@@ -1,6 +1,6 @@
 <?php
 
-function renderTemlate($page, array $fields = [])
+function renderTemplate($page, array $fields = [])
 {
     extract($fields);
     ob_start();
@@ -11,6 +11,13 @@ function renderTemlate($page, array $fields = [])
         echo "Error - template's file '{$fileName}' wasn't founded...";
     }
     return ob_get_clean();
+}
+
+function api($page)
+{
+    $fileName = API . $page . ".php";
+        include $fileName;
+
 }
 
 function fwrite_stream($fp, $string)

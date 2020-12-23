@@ -26,6 +26,11 @@ function menu()
             'name' => 'calculator2',
             'href' => './calculator2',
             'value' => 'calculator2'
+        ],
+        [
+            'name' => 'reviews',
+            'href' => './reviews',
+            'value' => 'reviews'
         ]
     ];
 }

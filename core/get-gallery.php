@@ -2,7 +2,7 @@
 
 function getgallery()
 {
-    $images = get_db_result("SELECT * FROM " . PICTURES. " ORDER BY namber_of_views DESC");
+    $images = get_db_result("SELECT * FROM " . PICTURES . " ORDER BY number_of_views DESC");
     $gallery = [];
     foreach ($images as  $img) {
         $params = [

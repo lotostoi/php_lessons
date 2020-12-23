@@ -21,24 +21,28 @@ $menu_params = [
 switch ($page) {
     case 'index':
         $content_params = ['title' => 'Главная'];
+        renderPages($page, $menu_params, $content_params);
         break;
     case 'portfolio':
         $content_params = ['title' => 'Портфолио'];
+        renderPages($page, $menu_params, $content_params);
         break;
     case 'gallery/main':
         $result_load = !empty($_FILES) || $_GET['messag'] === 'ok' || $_GET['dellAll'] === 'ok' ? load_content() : null;
         $content_params = [
             'title' => 'Домашняя работа',
-            'form' => renderTemlate('gallery/loader', ['result_load' => $result_load]),
-            'gallery' => renderTemlate('gallery/gallery', ['gallery' => getgallery()]),
+            'form' => renderTemplate('gallery/loader', ['result_load' => $result_load]),
+            'gallery' => renderTemplate('gallery/gallery', ['gallery' => getgallery()]),
         ];
+        renderPages($page, $menu_params, $content_params);
         break;
     case 'gallery/picture':
         $id = (int) $_GET['id'];
-        inc_namber_of_views_by_id($id);
+        inc_number_of_views_by_id($id);
         $content_params = [
             'image' => getImegeById($id)
         ];
+        renderPages($page, $menu_params, $content_params);
         break;
     case 'calculator1':
         $page = "calculators/select";
@@ -51,16 +55,32 @@ switch ($page) {
             'y' => $y,
             'result' => $result,
         ];
+        renderPages($page, $menu_params, $content_params);
         break;
     case 'calculator2':
         $page = "calculators/input";
         $content_params = [];
+        renderPages($page, $menu_params, $content_params);
+        break;
+    case 'reviews':
+        $page = "reviews/reviews";
+        $reviews = $images = get_db_result("SELECT * FROM " . REVIEWS . " ORDER BY id DESC");
+        $content_params = ['reviews' => $reviews];
+        renderPages($page, $menu_params, $content_params);
+        break;
+    case 'calculator':
+        api($page);
+        break;
+    case 'calculator' || 'apireviews':
+        api($page);
         break;
 }
 
-$fields = [
-    'header' => renderTemlate('header', $menu_params),
-    'content' => renderTemlate($page, $content_params)
-];
-
-echo renderTemlate('layouts/main', $fields);
+function renderPages($page, $menu_params, $content_params)
+{
+    $fields = [
+        'header' => renderTemplate('header', $menu_params),
+        'content' => renderTemplate($page, $content_params)
+    ];
+    echo renderTemplate('layouts/main', $fields);
+}
