@@ -1,5 +1,4 @@
 <?php
-require_once CORE_FOLDER . "chenge.php";
 
 function renderTemlate($page, array $fields = [])
 {
@@ -9,9 +8,29 @@ function renderTemlate($page, array $fields = [])
     if (file_exists($fileName)) {
         include $fileName;
     } else {
-        echo "Error- template's file '{$fileName}' wasn't founded...";
+        echo "Error - template's file '{$fileName}' wasn't founded...";
     }
     return ob_get_clean();
+}
+
+function fwrite_stream($fp, $string) {
+    for ($written = 0; $written < strlen($string); $written += $fwrite) {
+        $fwrite = fwrite($fp, substr($string, $written));
+        if ($fwrite === false) {
+            return $written;
+        }
+    }
+    return $written;
+}
+function cleanDir($dir) {
+    $files = glob($dir."/*");
+    if (count($files) > 0) {
+        foreach ($files as $file) {      
+            if (file_exists($file)) {
+            unlink($file);
+            }   
+        }
+    }
 }
 
 
