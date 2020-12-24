@@ -1,5 +1,5 @@
 <?php
-function getImegeById($id)
+function getImageById($id)
 {
     return  get_db_result('SELECT * FROM ' . PICTURES . " WHERE id={$id}")[0];
 }

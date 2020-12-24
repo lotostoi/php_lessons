@@ -83,6 +83,118 @@
           transform: rotate(5deg);
 }
 
+.catalog {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.catalog__h1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 20px 0;
+  padding: 0 10px;
+  font-family: "Roboto", sans-serif;
+}
+
+.catalog__cont {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.catalog__cont > .product {
+  margin: 5px;
+  width: 30%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 10px;
+  border: 1px solid rgba(128, 128, 128, 0.561);
+}
+
+.catalog__cont > .product > .img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.catalog__cont > .product > .img > img {
+  width: 100%;
+}
+
+.catalog__cont > .product > .title {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+}
+
+.catalog__cont > .product > .tags {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  font-family: "Roboto", sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.catalog__cont > .product > .tags > .title {
+  font-weight: 500;
+  font-style: italic;
+  margin-right: 5px;
+}
+
+.catalog__cont > .product > .tags > span {
+  font-weight: 300;
+  font-style: italic;
+  margin-right: 5px;
+}
+
+.catalog__cont > .product > .link {
+  margin: 10px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-decoration: none;
+  font-weight: 400;
+  font-style: italic;
+  margin-right: 5px;
+}
+
+.main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  padding: 20px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
 .loader {
   width: 100%;
   padding: 10px;
@@ -97,13 +209,13 @@
           align-items: center;
 }
 
-.loader form {
+.loader__form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.loader form input {
+.loader__form input {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -124,16 +236,16 @@
   font-family: "Roboto", sans-serif;
 }
 
-.loader form input:hover {
+.loader__form input:hover {
   background-color: rgba(255, 127, 80, 0.431);
 }
 
-.loader form input:active {
+.loader__form input:active {
   background-color: #f74809;
 }
 
-.loader form button,
-.loader form a {
+.loader__form button,
+.loader__form a {
   border: none;
   width: 200px;
   margin-left: 20px;
@@ -155,13 +267,13 @@
   outline: none;
 }
 
-.loader form button:hover,
-.loader form a:hover {
+.loader__form button:hover,
+.loader__form a:hover {
   background-color: rgba(255, 127, 80, 0.418);
 }
 
-.loader form button:active,
-.loader form a:active {
+.loader__form button:active,
+.loader__form a:active {
   background-color: #f74809;
 }
 
@@ -296,7 +408,7 @@
   font-weight: 200;
 }
 
-form {
+form.calculator {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -308,8 +420,8 @@ form {
   background-color: rgba(255, 166, 0, 0.801);
 }
 
-form input,
-form select {
+form.calculator input,
+form.calculator select {
   padding: 5px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -326,7 +438,7 @@ form select {
   font-size: 1.5rem;
 }
 
-form p {
+form.calculator p {
   margin: 10px;
   font-size: 1.5rem;
 }
@@ -381,7 +493,29 @@ form p {
   display: -ms-flexbox;
   display: flex;
   outline: none;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  font-family: "Roboto", sans-serif;
+  padding: 5px;
+}
+
+.reviews__form > label > input::-webkit-input-placeholder {
+  font-size: 1.2rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.reviews__form > label > input:-moz-placeholder {
+  font-size: 1.2rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.reviews__form > label > input::-moz-placeholder {
+  font-size: 1.2rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.reviews__form > label > input:-ms-input-placeholder {
+  font-size: 1.2rem;
+  font-family: "Roboto", sans-serif;
 }
 
 .reviews__form > label > textarea {
@@ -394,7 +528,35 @@ form p {
   display: flex;
   outline: none;
   border-radius: 5px;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.reviews__form > label > textarea::-webkit-input-placeholder {
+  font-size: 1.2rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.reviews__form > label > textarea:-moz-placeholder {
+  font-size: 1.2rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.reviews__form > label > textarea::-moz-placeholder {
+  font-size: 1.2rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.reviews__form > label > textarea:-ms-input-placeholder {
+  font-size: 1.2rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.reviews__form > p {
+  margin-bottom: -10px;
+  padding: 10px 0;
+  font-size: 1.2rem;
+  font-family: "Roboto", sans-serif;
 }
 
 .reviews__form > button {
@@ -462,6 +624,7 @@ form p {
           flex-direction: column;
   font-style: italic;
   font-weight: 300;
+  font-size: 1.2rem;
   font-family: "Roboto", sans-serif;
 }
 
@@ -475,6 +638,26 @@ form p {
   outline: none;
   border-radius: 5px;
   font-size: 1.2rem;
+}
+
+.reviews__review > .user > .edit_review::-webkit-input-placeholder {
+  font-size: 1.2rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.reviews__review > .user > .edit_review:-moz-placeholder {
+  font-size: 1.2rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.reviews__review > .user > .edit_review::-moz-placeholder {
+  font-size: 1.2rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.reviews__review > .user > .edit_review:-ms-input-placeholder {
+  font-size: 1.2rem;
+  font-family: "Roboto", sans-serif;
 }
 
 .reviews__review > .edit {

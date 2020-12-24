@@ -12,7 +12,7 @@
             </span>
             <textarea type="text" name="review" placeholder="Your review"></textarea>
         </label>
-        <p style="display: none; color: red;" class="message">Login or passwor are empty!</p>
+        <p style="display: none; color: red;" class="message">Login or review are empty!</p>
         <button type="submit"> Add reviews </button>
     </form>
 
@@ -45,7 +45,7 @@
         e.preventDefault()
         let body = new FormData(form)
         body.append('operation', 'add')
-        let res = await fetch('./apireviews', {
+        let res = await fetch('./api-reviews', {
             method: 'POST',
             body
         })
@@ -63,7 +63,7 @@
             let body = new FormData()
             body.append('operation', 'delete')
             body.append('id', e.target.dataset.id)
-            let res = await fetch('./apireviews', {
+            let res = await fetch('./api-reviews', {
                 method: 'POST',
                 body
             })
@@ -87,7 +87,7 @@
             let newVal = document.querySelector(`textarea[data-review="${e.target.dataset.save}"]`).value
             if (val !== newVal) {
                 body.append('review', document.querySelector(`textarea[data-review="${e.target.dataset.save}"]`).value)
-                let res = await fetch('./apireviews', {
+                let res = await fetch('./api-reviews', {
                     method: 'POST',
                     body
                 })

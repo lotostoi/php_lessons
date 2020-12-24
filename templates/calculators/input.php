@@ -1,4 +1,4 @@
-<form id="form">
+<form id="form" class = "calculator">
     <p> Введите две цифры и выберите операцию. </p>
     <div class="container">
         <input type="text" name="firstNumber" value="0" style="width:50px;">
@@ -23,7 +23,7 @@
         if (e.target.tagName === 'INPUT') {
             let data = new FormData(form)
             data.append('operation', e.target.name)
-            let response = await fetch('./calculator', {
+            let response = await fetch('./api-calculator', {
                 method: "POST",
                 body: data
             })

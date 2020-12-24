@@ -1,4 +1,4 @@
-<form method="POST">
+<form method="POST" class = "calculator">
     <p> Введите две цифры и выберите операцию. </p>
     <div class="container">
         <input type="text" name="firstNumber" value="<?= $x ?>">

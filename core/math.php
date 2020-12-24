@@ -16,7 +16,7 @@ function mult($a, $b)
 
 function div($a, $b)
 {
-    return $b === 0 ? "Error -  dividing on zero!" :  $a / $b;
+    return (int) $b === 0 ? "Error -  dividing on zero!" :  $a / $b;
 }
 
 function mathOperation($arg1, $arg2, $operation)

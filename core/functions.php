@@ -13,35 +13,114 @@ function renderTemplate($page, array $fields = [])
     return ob_get_clean();
 }
 
+function renderPages($page, $params)
+{
+    $fields = [
+        'header' => renderTemplate('header', $params),
+        'content' => renderTemplate($page, $params)
+    ];
+    echo renderTemplate('layouts/main', $fields);
+}
+
+
 function api($page)
 {
     $fileName = API . $page . ".php";
-        include $fileName;
-
+    include $fileName;
 }
 
-function fwrite_stream($fp, $string)
+function renderPage($page)
 {
-    for ($written = 0; $written < strlen($string); $written += $fwrite) {
-        $fwrite = fwrite($fp, substr($string, $written));
-        if ($fwrite === false) {
-            return $written;
-        }
+    $menu = compilateMenu(menu());
+    switch ($page) {
+        case 'index':
+            $params = [
+                'menu' => $menu,
+                'title' => 'Главная'
+            ];
+            renderPages($page, $params);
+            break;
+        case 'gallery':
+            $page = 'gallery/main';
+            $flag =  !empty($_FILES) || $_GET['message'] === 'ok' || $_GET['dellAll'] === 'ok';
+            $result_load = $flag ? load_content() : null;
+            $params = [
+                'menu' => $menu,
+                'form' => renderTemplate('gallery/loader', ['result_load' => $result_load]),
+                'gallery' => renderTemplate('gallery/gallery', ['gallery' => getgallery()]),
+            ];
+            renderPages($page, $params);
+            break;
+        case 'picture':
+            $page = 'gallery/picture';
+            $id = (int) $_GET['id'];
+            inc_number_of_views_by_id($id);
+            $params = [
+                'menu' => $menu,
+                'image' => getImageById($id)
+            ];
+            renderPages($page, $params);
+            break;
+        case 'calculator1':
+            $page = "calculators/select";
+            $operation = $_POST['operation'];
+            $x = isset($_POST['firstNumber']) ? (int)$_POST['firstNumber'] : 0;
+            $y = isset($_POST['secondNumber']) ? (int)$_POST['secondNumber'] : 0;
+            $result = $operation ? mathOperation($x, $y, $operation) : null;
+            $params = [
+                'menu' => $menu,
+                'x' => $x,
+                'y' => $y,
+                'result' => $result,
+            ];
+            renderPages($page, $params);
+            break;
+        case 'calculator2':
+            $page = "calculators/input";
+            renderPages($page, [
+                'menu' => $menu,
+            ]);
+            break;
+        case 'reviews':
+            $page = "reviews/reviews";
+            $reviews =  get_db_result("SELECT * FROM " . REVIEWS . " ORDER BY id DESC");
+            $params = [
+                'menu' => $menu,
+                'reviews' => $reviews
+            ];
+            renderPages($page, $params);
+            break;
+        case 'catalog':
+            $page = "catalog/catalog";
+            getCatalog();
+            $params = [
+                'menu' => $menu,
+                'catalog' => getCatalog()
+            ];
+            renderPages($page, $params);
+            break;
+        case 'addwork':
+            $page = "admin/catalog/add-work";
+            load_image();
+            $params = [
+                'menu' => $menu,
+                'tags' => get_db_result("SELECT name FROM " . TAGS)
+            ];
+            renderPages($page, $params);
+            break;
     }
-    return $written;
 }
-function cleanDir($dir)
+
+function server($page)
 {
-    $files = glob($dir . "/*");
-    if (count($files) > 0) {
-        foreach ($files as $file) {
-            if (file_exists($file)) {
-                unlink($file);
-            }
-        }
+    switch ($page) {
+        case 'api-calculator':
+            $page = 'calculator';
+            api($page);
+            break;
+        case 'api-reviews':
+            $page = 'reviews';
+            api($page);
+            break;
     }
-}
-function set_atr_selected($operation, $name_operation)
-{
-    return $operation === $name_operation ? "selected" : "";
 }

@@ -2,7 +2,7 @@
     <form method="post" enctype="multipart/form-data" multiple class="loader__form">
         <input type="file" name="file[]" id="files" multiple>
         <button type="submit">Add images</button>
-        <a href="./gallery-main?dellAll=ok">Delete All</a>
+        <a href="./gallery?dellAll=ok">Delete All</a>
     </form>
 </div>
 

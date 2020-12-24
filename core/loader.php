@@ -12,7 +12,7 @@ function load_content()
         }
     }
 
-    if ($_GET['messag'] === 'ok') {
+    if ($_GET['message'] === 'ok') {
         $result_load = file_get_contents(TEMPLATES . "gallery/log.php");
         $fp = fopen(TEMPLATES . "gallery/log.php", "w+");
         fwrite_stream($fp, '');
@@ -56,7 +56,7 @@ function load_content()
         }
         $fp = fopen(TEMPLATES . "gallery/log.php", "w+");
         fwrite_stream($fp, $result_load);
-        header("Location: /gallery-main?messag=ok");
+        header("Location: /gallery-main?message=ok");
     }
     return $result_load !== '' ? $result_load : null;
 }

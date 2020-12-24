@@ -8,13 +8,8 @@ function menu()
             'value' => 'Главная'
         ],
         [
-            'name' => 'portfolio',
-            'href' => './portfolio',
-            'value' => 'Портфолио'
-        ],
-        [
             'name' => 'gallery',
-            'href' => './gallery-main',
+            'href' => './gallery',
             'value' => 'Галерея'
         ],
         [
@@ -31,6 +26,16 @@ function menu()
             'name' => 'reviews',
             'href' => './reviews',
             'value' => 'reviews'
+        ],
+        [
+            'name' => 'catalog',
+            'href' => './catalog',
+            'value' => 'catalog'
+        ],
+        [
+            'name' => 'addwork',
+            'href' => './addwork',
+            'value' => 'addwork'
         ]
     ];
 }
