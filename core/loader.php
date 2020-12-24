@@ -56,7 +56,7 @@ function load_content()
         }
         $fp = fopen(TEMPLATES . "gallery/log.php", "w+");
         fwrite_stream($fp, $result_load);
-        header("Location: /gallery-main?message=ok");
+        
     }
     return $result_load !== '' ? $result_load : null;
 }

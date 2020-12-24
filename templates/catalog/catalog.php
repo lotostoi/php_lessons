@@ -4,7 +4,7 @@
         <?php foreach ($catalog as $work) : ?>
             <div class="product">
                 <div class="img">
-                    <img src="<?= SMALL . $work['img'] . '.jpg' ?>" alt="">
+                    <img src="<?= SMALL . $work['img']  ?>" alt="">
                 </div>
                 <p class="title"> <?= $work['title'] ?></p>
                 <div class="tags">

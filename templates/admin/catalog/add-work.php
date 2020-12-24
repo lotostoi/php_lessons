@@ -4,6 +4,9 @@
             <label for="">Load image</label>
             <input type="file" name="work-image[]">
         </div>
+        <?php if ($_SESSION['errors']['load']) : ?>
+            <p class="form__messeage">Загрузите изображение</p>
+        <?php endif; ?>
         <div class="form__tags">
             <?php foreach ($tags as $tag) : ?>
                 <label>
@@ -12,30 +15,46 @@
                 </label>
             <?php endforeach; ?>
         </div>
+        <?php if ($_SESSION['errors']['tags']) : ?>
+            <p class="form__messeage">Выберите теги!</p>
+        <?php endif; ?>
         <div class="form__title">
             <label>
                 <span>Title:</span>
                 <input type="text" name="title">
             </label>
         </div>
+        <?php if ($_SESSION['errors']['title']) : ?>
+            <p class="form__messeage">Введите название!</p>
+        <?php endif; ?>
         <div class="form__git">
             <label>
                 <span>Link to git:</span>
                 <input type="text" name="git">
             </label>
         </div>
+        <?php if ($_SESSION['errors']['git']) : ?>
+            <p class="form__messeage">Введите сылку...</p>
+        <?php endif; ?>
         <div class="form__project">
             <label>
                 <span>Link to project:</span>
                 <input type="text" name="project">
             </label>
         </div>
+        <?php if ($_SESSION['errors']['project']) : ?>
+            <p class="form__messeage">Введите сылку...</p>
+        <?php endif; ?>
         <div class="form__project">
             <label>
                 <span>Description:</span>
                 <textarea type="text" name="description"></textarea>
             </label>
         </div>
+        <?php if ($_SESSION['errors']['description']) : ?>
+            <p class="form__messeage">Введите описание...</p>
+        <?php endif; ?>
+        <input type="hidden" name="start" value="1">
         <button type="submit">Add work</button>
     </form>
 </div>

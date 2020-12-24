@@ -7,11 +7,11 @@ function menu()
             'href' => './',
             'value' => 'Главная'
         ],
-        [
+/*         [
             'name' => 'gallery',
             'href' => './gallery',
             'value' => 'Галерея'
-        ],
+        ], */
         [
             'name' => 'calculator1',
             'href' => './calculator1',

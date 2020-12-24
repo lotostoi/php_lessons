@@ -40,7 +40,7 @@ function renderPage($page)
             ];
             renderPages($page, $params);
             break;
-        case 'gallery':
+            /*       case 'gallery':
             $page = 'gallery/main';
             $flag =  !empty($_FILES) || $_GET['message'] === 'ok' || $_GET['dellAll'] === 'ok';
             $result_load = $flag ? load_content() : null;
@@ -60,7 +60,7 @@ function renderPage($page)
                 'image' => getImageById($id)
             ];
             renderPages($page, $params);
-            break;
+            break; */
         case 'calculator1':
             $page = "calculators/select";
             $operation = $_POST['operation'];
@@ -101,11 +101,16 @@ function renderPage($page)
             break;
         case 'addwork':
             $page = "admin/catalog/add-work";
-            load_image();
+            errors();
+            if (count($_SESSION['errors']) === 0 && $_POST['title']) {
+                addWork();
+            }
             $params = [
                 'menu' => $menu,
-                'tags' => get_db_result("SELECT name FROM " . TAGS)
+                'tags' => get_db_result("SELECT name FROM " . TAGS),
+                'errors' => $_POST['errors']
             ];
+
             renderPages($page, $params);
             break;
     }
