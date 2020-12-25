@@ -2,7 +2,8 @@
     <?php if ($_GET['result'] === 'ok') : ?>
         <p class="result_loader"> Работа была успешно добавлена!</p>
     <?php endif; ?>
-    <h1 class="admin-catalog__h1">Add work</h1>
+    <a href="/catalog/delete?id=<?=$_GET['id']?>" class="admin-catalog__delete">X</a>
+    <h1 class="admin-catalog__h1">Edit work</h1>
     <form action="" enctype="multipart/form-data" class="admin-catalog__from" method="POST">
 
         <div class="form__img">
@@ -20,7 +21,7 @@
             <?php foreach ($tags as $tag) : ?>
                 <label>
                     <span><?= $tag['name'] ?></span>
-                    <input type="checkbox" name="<?= '_tag_' . $tag['name'] ?>" value = "<?php $_POST['_tag_' . $tag['name']]; ?>">
+                    <input type="checkbox" name="<?= '_tag_' . $tag['name'] ?>" <?php if ($checked[$tag['name']]) echo 'checked'; ?>>
                 </label>
             <?php endforeach; ?>
             <?php if ($_SESSION['errors']['tags']) : ?>
@@ -54,7 +55,7 @@
                 <input type="text" name="project" value="<?= $_POST['project'] ?>">
             </label>
             <?php if ($_SESSION['errors']['project']) : ?>
-                <p class="form__message">Введите сылку...</p>
+                <p class="form__message">Введите ссылку...</p>
             <?php endif; ?>
         </div>
 
@@ -67,8 +68,7 @@
                 <p class="form__message">Введите описание...</p>
             <?php endif; ?>
         </div>
-
         <input type="hidden" name="start" value="1">
-        <button type="submit">Add work</button>
+        <button type="submit">Edit work</button>
     </form>
 </div>

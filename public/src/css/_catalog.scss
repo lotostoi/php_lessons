@@ -40,6 +40,7 @@
         font-size: 1.2rem;
         font-family: $f-r;
         display: flex;
+        flex-wrap: wrap;
         & > .title {
           font-weight: 500;
           font-style: italic;
@@ -56,10 +57,50 @@
         display: flex;
         text-decoration: none;
         font-weight: 400;
-      
+
         font-style: italic;
         margin-right: 5px;
       }
     }
+  }
+}
+.work {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px;
+  margin-top: 10px;
+  box-sizing: border-box;
+  border: 1px solid rgb(216, 216, 216);
+  position: relative;
+  &__edit {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  &__img {
+    margin: 20px 0;
+    width: 50%;
+    border: 1px solid rgb(216, 216, 216);
+    & > img {
+      width: 100%;
+    }
+  }
+  &__title {
+    font-family: $f-r;
+    margin-bottom: 20px;
+  }
+  &__description {
+    font-family: $f-r;
+    font-size: 1.2rem;
+    line-height: 35px;
+    margin-bottom: 20px;
+  }
+  &__a {
+    font-family: $f-r;
+    font-size: 1.2rem;
+    line-height: 35px;
+    font-style: italic;
+    margin-bottom: 20px;
   }
 }

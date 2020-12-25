@@ -158,6 +158,8 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .catalog__cont > .product > .tags > .title {
@@ -181,6 +183,342 @@
   font-weight: 400;
   font-style: italic;
   margin-right: 5px;
+}
+
+.work {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  padding: 20px;
+  margin-top: 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #d8d8d8;
+  position: relative;
+}
+
+.work__edit {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.work__img {
+  margin: 20px 0;
+  width: 50%;
+  border: 1px solid #d8d8d8;
+}
+
+.work__img > img {
+  width: 100%;
+}
+
+.work__title {
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 20px;
+}
+
+.work__description {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2rem;
+  line-height: 35px;
+  margin-bottom: 20px;
+}
+
+.work__a {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2rem;
+  line-height: 35px;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.admin-catalog {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  padding: 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
+}
+
+.admin-catalog__delete {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.admin-catalog__h1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 10px 0;
+  font-family: "Roboto", sans-serif;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.admin-catalog__from {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.admin-catalog__from .form__message {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 10px 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: red;
+  font-style: italic;
+}
+
+.admin-catalog__from > .form__img {
+  width: 100%;
+  margin: 10px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: rgba(128, 128, 128, 0.15);
+  padding: 10px;
+  border-radius: 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.admin-catalog__from > .form__img > div.img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.admin-catalog__from > .form__img > div.img > label {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.admin-catalog__from > .form__img > div.img > input {
+  padding: 10px;
+  margin-left: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 30px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  line-height: 35px;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+}
+
+.admin-catalog__from > .form__img > div.img > input::-webkit-input-placeholder {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+}
+
+.admin-catalog__from > .form__img > div.img > input:-moz-placeholder {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+}
+
+.admin-catalog__from > .form__img > div.img > input::-moz-placeholder {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+}
+
+.admin-catalog__from > .form__img > div.img > input:-ms-input-placeholder {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+}
+
+.admin-catalog__from > .form__tags {
+  width: 100%;
+  margin: 10px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  background-color: rgba(128, 128, 128, 0.15);
+  padding: 10px;
+  border-radius: 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.admin-catalog__from > .form__tags > label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 5px;
+  margin-right: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.admin-catalog__from > .form__tags > label > span {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.1rem;
+}
+
+.admin-catalog__from > .form__tags > label > input {
+  margin-left: 10px;
+}
+
+.admin-catalog__from > .form__title,
+.admin-catalog__from > .form__git,
+.admin-catalog__from > .form__project {
+  width: 100%;
+  margin: 10px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  background-color: rgba(128, 128, 128, 0.15);
+  padding: 10px;
+  border-radius: 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.admin-catalog__from > .form__title > label,
+.admin-catalog__from > .form__git > label,
+.admin-catalog__from > .form__project > label {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 5px;
+  margin-right: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.admin-catalog__from > .form__title > label > span,
+.admin-catalog__from > .form__git > label > span,
+.admin-catalog__from > .form__project > label > span {
+  width: 200px;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.1rem;
+}
+
+.admin-catalog__from > .form__title > label > input,
+.admin-catalog__from > .form__git > label > input,
+.admin-catalog__from > .form__project > label > input {
+  border-radius: 10px;
+  outline: none;
+  width: 70%;
+  min-height: 25px;
+  padding: 5px;
+  margin-left: 10px;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.1rem;
+}
+
+.admin-catalog__from > .form__description {
+  width: 100%;
+  margin: 10px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  background-color: rgba(128, 128, 128, 0.15);
+  padding: 10px;
+  border-radius: 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.admin-catalog__from > .form__description > label {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 5px;
+  margin-right: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.admin-catalog__from > .form__description > label > span {
+  width: 200px;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.1rem;
+}
+
+.admin-catalog__from > .form__description > label > textarea {
+  border-radius: 10px;
+  outline: none;
+  width: 70%;
+  min-height: 95px;
+  padding: 5px;
+  margin-left: 10px;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.1rem;
+}
+
+.admin-catalog__from > button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 40px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.4rem;
 }
 
 .main {
@@ -283,7 +621,7 @@
   right: 10px;
   width: 400px;
   z-index: 100;
-  background-color: black;
+  background-color: #c07c15;
   padding: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -299,6 +637,9 @@
   border: 1px solid gray;
   -webkit-transition: opacity 0.5s;
   transition: opacity 0.5s;
+  margin: 5px;
+  color: white;
+  font-size: 1.1rem;
 }
 
 .result_loader > p {

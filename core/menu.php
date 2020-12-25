@@ -4,37 +4,32 @@ function menu()
     return [
         [
             'name' => 'main',
-            'href' => './',
+            'href' => '/',
             'value' => 'Главная'
         ],
-/*         [
-            'name' => 'gallery',
-            'href' => './gallery',
-            'value' => 'Галерея'
-        ], */
         [
             'name' => 'calculator1',
-            'href' => './calculator1',
+            'href' => '/calculator1',
             'value' => 'calculator1'
         ],
         [
             'name' => 'calculator2',
-            'href' => './calculator2',
+            'href' => '/calculator2',
             'value' => 'calculator2'
         ],
         [
             'name' => 'reviews',
-            'href' => './reviews',
+            'href' => '/reviews',
             'value' => 'reviews'
         ],
         [
             'name' => 'catalog',
-            'href' => './catalog',
+            'href' => '/catalog/get',
             'value' => 'catalog'
         ],
         [
             'name' => 'addwork',
-            'href' => './addwork',
+            'href' => '/catalog/add',
             'value' => 'addwork'
         ]
     ];

@@ -29,7 +29,7 @@ function api($page)
     include $fileName;
 }
 
-function renderPage($page)
+function renderPage($page, $action)
 {
     $menu = compilateMenu(menu());
     switch ($page) {
@@ -40,27 +40,6 @@ function renderPage($page)
             ];
             renderPages($page, $params);
             break;
-            /*       case 'gallery':
-            $page = 'gallery/main';
-            $flag =  !empty($_FILES) || $_GET['message'] === 'ok' || $_GET['dellAll'] === 'ok';
-            $result_load = $flag ? load_content() : null;
-            $params = [
-                'menu' => $menu,
-                'form' => renderTemplate('gallery/loader', ['result_load' => $result_load]),
-                'gallery' => renderTemplate('gallery/gallery', ['gallery' => getgallery()]),
-            ];
-            renderPages($page, $params);
-            break;
-        case 'picture':
-            $page = 'gallery/picture';
-            $id = (int) $_GET['id'];
-            inc_number_of_views_by_id($id);
-            $params = [
-                'menu' => $menu,
-                'image' => getImageById($id)
-            ];
-            renderPages($page, $params);
-            break; */
         case 'calculator1':
             $page = "calculators/select";
             $operation = $_POST['operation'];
@@ -91,28 +70,32 @@ function renderPage($page)
             renderPages($page, $params);
             break;
         case 'catalog':
-            $page = "catalog/catalog";
-            getCatalog();
-            $params = [
-                'menu' => $menu,
-                'catalog' => getCatalog()
-            ];
+            switch ($action) {
+                case 'get':
+                    $page = "catalog/catalog";
+                    break;
+                case 'add':
+                    $page = "admin/catalog/add-work";
+                    break;
+                case 'edit':
+                    $page = "admin/catalog/edit-work";
+                    break;
+                case 'delete':
+                    $page = "admin/catalog/edit-work";
+                    break;
+            }
+            $params = catalogActions($action);
             renderPages($page, $params);
             break;
-        case 'addwork':
-            $page = "admin/catalog/add-work";
-            errors();
-            if (count($_SESSION['errors']) === 0 && $_POST['title']) {
-                addWork();
-            }
+        case 'work':
+            $page = "catalog/work";
+            $id = $_GET['id'];
             $params = [
                 'menu' => $menu,
-                'tags' => get_db_result("SELECT name FROM " . TAGS),
+                'work' => get_db_result("SELECT * FROM " . WORKS . " WHERE id=$id")[0],
                 'errors' => $_POST['errors']
             ];
-
             renderPages($page, $params);
-            break;
     }
 }
 
