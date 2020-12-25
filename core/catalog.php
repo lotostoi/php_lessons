@@ -38,18 +38,7 @@ function catalogActions($action)
     return $params;
 }
 
-function getCheckedTags()
-{
-    $id = $_GET['id'];
-    $ids_checked_tags = get_db_result("SELECT id_tag FROM " . WORKS_TO_TAGS . " WHERE id_work=$id");
-    $checked = [];
-    foreach ($ids_checked_tags as $id) {
-        $id = $id['id_tag'];
-        $tag = get_db_result("SELECT name FROM " . TAGS . " WHERE id=$id")[0]['name'];
-        $checked[$tag] = true;
-    }
-    return $checked;
-}
+
 
 function deleteWork()
 {
@@ -84,6 +73,7 @@ function getCatalog()
     }
     return $catalog;
 }
+
 function check_form()
 {
     $errors = [];
@@ -134,6 +124,31 @@ function addWork()
     header("Location: /addwork/add?result=ok");
 }
 
+
+function getTags()
+{
+    $tags = [];
+    foreach ($_POST as $key => $val) {
+        if (strpos($key, '_tag_') !== false) {
+            $tags[] = str_replace('_', '.', str_replace('_tag_', '', $key));
+        }
+    }
+    return $tags;
+}
+
+function getCheckedTags()
+{
+    $id = $_GET['id'];
+    $ids_checked_tags = get_db_result("SELECT id_tag FROM " . WORKS_TO_TAGS . " WHERE id_work=$id");
+    $checked = [];
+    foreach ($ids_checked_tags as $id) {
+        $id = $id['id_tag'];
+        $tag = get_db_result("SELECT name FROM " . TAGS . " WHERE id=$id")[0]['name'];
+        $checked[$tag] = true;
+    }
+    return $checked;
+}
+
 function load_image()
 {
     $name = false;
@@ -155,14 +170,4 @@ function load_image()
         }
     }
     return $name;
-}
-function getTags()
-{
-    $tags = [];
-    foreach ($_POST as $key => $val) {
-        if (strpos($key, '_tag_') !== false) {
-            $tags[] = str_replace('_', '.', str_replace('_tag_', '', $key));
-        }
-    }
-    return $tags;
 }

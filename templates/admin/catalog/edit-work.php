@@ -45,7 +45,7 @@
                 <input type="text" name="git" value="<?= $_POST['git'] ?>">
             </label>
             <?php if ($_SESSION['errors']['git']) : ?>
-                <p class="form__message">Введите сылку...</p>
+                <p class="form__message">Введите cсылку...</p>
             <?php endif; ?>
         </div>
 
@@ -58,7 +58,6 @@
                 <p class="form__message">Введите ссылку...</p>
             <?php endif; ?>
         </div>
-
         <div class="form__description">
             <label>
                 <span>Description:</span>
