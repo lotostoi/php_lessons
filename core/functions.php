@@ -1,7 +1,6 @@
 <?php
-require_once CORE_FOLDER . "chenge.php";
 
-function renderTemlate($page, array $fields = [])
+function renderTemplate($page, array $fields = [])
 {
     extract($fields);
     ob_start();
@@ -9,9 +8,106 @@ function renderTemlate($page, array $fields = [])
     if (file_exists($fileName)) {
         include $fileName;
     } else {
-        echo "Error- template's file '{$fileName}' wasn't founded...";
+        echo "Error - template's file '{$fileName}' wasn't founded...";
     }
     return ob_get_clean();
 }
 
+function renderPages($page, $params)
+{
+    $fields = [
+        'header' => renderTemplate('header', $params),
+        'content' => renderTemplate($page, $params)
+    ];
+    echo renderTemplate('layouts/main', $fields);
+}
 
+function api($page)
+{
+    $fileName = API . $page . ".php";
+    include $fileName;
+}
+
+function renderPage($page, $action)
+{
+    $menu = compilateMenu(menu());
+    switch ($page) {
+        case 'index':
+            $params = [
+                'menu' => $menu,
+                'title' => 'Главная'
+            ];
+            renderPages($page, $params);
+            break;
+        case 'calculator1':
+            $page = "calculators/select";
+            $operation = $_POST['operation'];
+            $x = isset($_POST['firstNumber']) ? (int)$_POST['firstNumber'] : 0;
+            $y = isset($_POST['secondNumber']) ? (int)$_POST['secondNumber'] : 0;
+            $result = $operation ? mathOperation($x, $y, $operation) : null;
+            $params = [
+                'menu' => $menu,
+                'x' => $x,
+                'y' => $y,
+                'result' => $result,
+            ];
+            renderPages($page, $params);
+            break;
+        case 'calculator2':
+            $page = "calculators/input";
+            renderPages($page, [
+                'menu' => $menu,
+            ]);
+            break;
+        case 'reviews':
+            $page = "reviews/reviews";
+            $reviews =  get_db_result("SELECT * FROM " . REVIEWS . " ORDER BY id DESC");
+            $params = [
+                'menu' => $menu,
+                'reviews' => $reviews
+            ];
+            renderPages($page, $params);
+            break;
+        case 'catalog':
+            switch ($action) {
+                case 'get':
+                    $page = "catalog/catalog";
+                    break;
+                case 'add':
+                    $page = "admin/catalog/add-work";
+                    break;
+                case 'edit':
+                    $page = "admin/catalog/edit-work";
+                    break;
+                case 'delete':
+                    $page = "admin/catalog/edit-work";
+                    break;
+            }
+            $params = catalogActions($action);
+            renderPages($page, $params);
+            break;
+        case 'work':
+            $page = "catalog/work";
+            $id = $_GET['id'];
+            $params = [
+                'menu' => $menu,
+                'work' => get_db_result("SELECT * FROM " . WORKS . " WHERE id=$id")[0],
+                'errors' => $_POST['errors']
+            ];
+            renderPages($page, $params);
+    }
+}
+
+function server($page)
+{
+    switch ($page) {
+        case 'api-calculator':
+            $page = 'calculator';
+            api($page);
+            break;
+        case 'api-reviews':
+            $page = 'reviews';
+            api($page);
+            break;
+    }
+}
