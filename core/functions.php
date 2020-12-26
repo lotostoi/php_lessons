@@ -22,7 +22,6 @@ function renderPages($page, $params)
     echo renderTemplate('layouts/main', $fields);
 }
 
-
 function api($page)
 {
     $fileName = API . $page . ".php";

@@ -1,15 +1,18 @@
 <div class="admin-catalog">
+
     <?php if ($_GET['result'] === 'ok') : ?>
         <p class="result_loader"> Работа была успешно добавлена!</p>
     <?php endif; ?>
-    <a href="/catalog/delete?id=<?=$_GET['id']?>" class="admin-catalog__delete">X</a>
-    <h1 class="admin-catalog__h1">Edit work</h1>
-    <form action="" enctype="multipart/form-data" class="admin-catalog__from" method="POST">
 
+    <a href="/catalog/delete?id=<?= $_GET['id'] ?>" class="link__outside">Delete work</a>
+
+    <h1 class="admin-catalog__h1">Edit work</h1>
+
+    <form action="" enctype="multipart/form-data" class="admin-catalog__from" method="POST">
         <div class="form__img">
             <div class="img">
                 <label for="">Load image:</label>
-                <input type="file" name="work-image[]">
+                <input type="file" name="work-image[]" value="<?= $work['load'] ?>">
             </div>
 
             <?php if ($_SESSION['errors']['load']) : ?>
@@ -32,7 +35,7 @@
         <div class="form__title">
             <label>
                 <span>Title:</span>
-                <input type="text" name="title" value="<?= $_POST['title'] ?>">
+                <input type="text" name="title" value="<?= $work['title'] ?>">
             </label>
             <?php if ($_SESSION['errors']['title']) : ?>
                 <p class="form__messeage">Введите название!</p>
@@ -42,7 +45,7 @@
         <div class="form__git">
             <label>
                 <span>Link to git:</span>
-                <input type="text" name="git" value="<?= $_POST['git'] ?>">
+                <input type="text" name="git" value="<?= $work['git'] ?>">
             </label>
             <?php if ($_SESSION['errors']['git']) : ?>
                 <p class="form__message">Введите cсылку...</p>
@@ -52,7 +55,7 @@
         <div class="form__project">
             <label>
                 <span>Link to project:</span>
-                <input type="text" name="project" value="<?= $_POST['project'] ?>">
+                <input type="text" name="project" value="<?= $work['project'] ?>">
             </label>
             <?php if ($_SESSION['errors']['project']) : ?>
                 <p class="form__message">Введите ссылку...</p>
@@ -61,13 +64,14 @@
         <div class="form__description">
             <label>
                 <span>Description:</span>
-                <textarea type="text" name="description"><?= $_POST['description'] ?></textarea>
+                <textarea type="text" name="description"><?= $work['description'] ?></textarea>
             </label>
             <?php if ($_SESSION['errors']['description']) : ?>
                 <p class="form__message">Введите описание...</p>
             <?php endif; ?>
         </div>
         <input type="hidden" name="start" value="1">
+        <input type="hidden" name="order" value="1">
         <button type="submit">Edit work</button>
     </form>
 </div>

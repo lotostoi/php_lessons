@@ -1,5 +1,8 @@
 <div class="work">
-    <a href="./catalog/edit?id=<?= $work['id'] ?>" class="work__edit">Edit this work</a>
+<?php if ($_GET['result'] === 'ok') : ?>
+        <p class="result_loader"  > Работа была успешно отредактированна!</p>
+    <?php endif; ?>
+    <a href="./catalog/edit?id=<?= $work['id'] ?>&order=1" class="link__outside">Edit this work</a>
     <div class="work__img">
         <img src="<?= BIG . $work['img'] ?>" alt="name" class="big-picture__img">
     </div>

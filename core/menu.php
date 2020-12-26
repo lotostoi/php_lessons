@@ -27,11 +27,6 @@ function menu()
             'href' => '/catalog/get',
             'value' => 'catalog'
         ],
-        [
-            'name' => 'addwork',
-            'href' => '/catalog/add',
-            'value' => 'addwork'
-        ]
     ];
 }
 

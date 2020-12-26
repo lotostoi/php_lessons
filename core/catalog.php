@@ -22,14 +22,18 @@ function catalogActions($action)
             ];
             break;
         case 'edit':
-            $id = $_GET['id'];
-            getCheckedTags();
+            $work = getWork();
             $params = [
                 'menu' => $menu,
                 'tags' => get_db_result("SELECT name FROM " . TAGS),
                 'checked' => getCheckedTags(),
+                'work' => $work,
                 'errors' => $_POST['errors']
             ];
+            check_form();
+            if (count($_SESSION['errors']) === 0 && $_POST['title']) {
+                editWork($work);
+            }
             break;
         case 'delete':
             deleteWork();
@@ -38,6 +42,67 @@ function catalogActions($action)
     return $params;
 }
 
+function getWork()
+{
+    $id = $_GET['id'];
+    $work = get_db_result("SELECT * FROM " . WORKS . " WHERE id=$id")[0];
+    if ((int)$_GET['order'] === 1 && (int)$_POST['order'] !== 1) {
+        return $work;
+    } else if ((int)$_POST['order'] === 1) {
+        $image = load_image();
+        $image = $image ? $image : $work['img'];
+        $_FILES['work-image']['name'][0] = $image;
+        return [
+            'id' => $id,
+            'title' => protect($_POST['title']),
+            'img' => $image,
+            'git' => protect($_POST['git']),
+            'project' => protect($_POST['project']),
+            'description' => protect($_POST['description']),
+        ];
+    }
+}
+
+function addWork()
+{
+    $title = protect($_POST['title']);
+    $git = protect($_POST['git']);
+    $img = load_image();
+    $project = protect($_POST['project']);
+    $description = protect($_POST['description']);
+    if ($title !== '' && $project !== '') {
+        $add = update_db("INSERT INTO " . WORKS .  " VALUES ('0','{$title}','{$img}','{$git}','{$project}','{$description}')");
+        if ($add) {
+            $tags = getTags();
+            $id_work = connect_db()->insert_id;
+            foreach ($tags as $tag) {
+                $id_tag = get_db_result("SELECT id FROM " . TAGS . " WHERE name = '{$tag}'")[0]['id'];
+                update_db("INSERT INTO " . WORKS_TO_TAGS .  " VALUES ('0','{$id_work}','{$id_tag}')");
+            }
+        }
+    }
+    header("Location: /catalog/add?result=ok");
+}
+
+function editWork($work)
+{
+    $id = $work['id'];
+    $title =  $work['title'];
+    $git = $work['git'];
+    $img = $work['img'];
+    $project = $work['project'];
+    $description =  $work['description'];
+    if ($title !== '' && $project !== '') {
+        $edit = update_db("UPDATE " . WORKS . " SET title = '$title', img = '$img', git = '$git', project = '$project', description = '$description'  WHERE id=$id");
+        $delete = update_db("DELETE  FROM " . WORKS_TO_TAGS . " WHERE id_work=$id");
+        $tags = getTags();
+        foreach ($tags as $tag) {
+            $id_tag = get_db_result("SELECT id FROM " . TAGS . " WHERE name = '{$tag}'")[0]['id'];
+            update_db("INSERT INTO " . WORKS_TO_TAGS .  " VALUES ('0','{$id}','{$id_tag}')");
+        }
+    }
+    header("Location: /work?id=$id&result=ok");
+}
 
 
 function deleteWork()
@@ -103,27 +168,6 @@ function check_form()
     $_SESSION['errors'] = $errors;
 }
 
-function addWork()
-{
-    $title = protect($_POST['title']);
-    $git = protect($_POST['git']);
-    $img = load_image();
-    $project = protect($_POST['project']);
-    $description = protect($_POST['description']);
-    if ($title !== '' && $project !== '') {
-        $add = update_db("INSERT INTO " . WORKS .  " VALUES ('0','{$title}','{$img}','{$git}','{$project}','{$description}')");
-        if ($add) {
-            $tags = getTags();
-            $id_work = connect_db()->insert_id;
-            foreach ($tags as $tag) {
-                $id_tag = get_db_result("SELECT id FROM " . TAGS . " WHERE name = '{$tag}'")[0]['id'];
-                update_db("INSERT INTO " . WORKS_TO_TAGS .  " VALUES ('0','{$id_work}','{$id_tag}')");
-            }
-        }
-    }
-    header("Location: /addwork/add?result=ok");
-}
-
 
 function getTags()
 {
@@ -139,12 +183,19 @@ function getTags()
 function getCheckedTags()
 {
     $id = $_GET['id'];
-    $ids_checked_tags = get_db_result("SELECT id_tag FROM " . WORKS_TO_TAGS . " WHERE id_work=$id");
     $checked = [];
-    foreach ($ids_checked_tags as $id) {
-        $id = $id['id_tag'];
-        $tag = get_db_result("SELECT name FROM " . TAGS . " WHERE id=$id")[0]['name'];
-        $checked[$tag] = true;
+    if ((int)$_GET['order'] === 1 && (int)$_POST['order'] !== 1) {
+        $ids_checked_tags = get_db_result("SELECT id_tag FROM " . WORKS_TO_TAGS . " WHERE id_work=$id");
+        foreach ($ids_checked_tags as $id) {
+            $id = $id['id_tag'];
+            $tag = get_db_result("SELECT name FROM " . TAGS . " WHERE id=$id")[0]['name'];
+            $checked[$tag] = true;
+        }
+    } else if ((int)$_POST['order'] === 1) {
+        $checked_tags = getTags();
+        foreach ($checked_tags as $tag) {
+            $checked[$tag] = true;
+        }
     }
     return $checked;
 }
@@ -163,7 +214,7 @@ function load_image()
         if (move_uploaded_file($link, $path_big)) {
             $image = new SimpleImage();
             $image->load($path_big);
-            $image->resizeToWidth(250);
+            $image->resizeToWidth(600);
             $image->save($path_small);
         } else {
             $name = false;

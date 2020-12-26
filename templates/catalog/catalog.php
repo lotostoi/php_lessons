@@ -2,6 +2,7 @@
     <?php if ($_GET['del'] === 'ok') : ?>
         <p class="result_loader">Работа была удалена успешно...</p>
     <?php endif; ?>
+    <a href="/catalog/add" class="link__outside">Add work</a>
     <h1 class="catalog__h1">Catalog</h1>
     <div class="catalog__cont">
         <?php foreach ($catalog as $work) : ?>
