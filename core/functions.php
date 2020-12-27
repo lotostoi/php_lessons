@@ -39,26 +39,7 @@ function renderPage($page, $action)
             ];
             renderPages($page, $params);
             break;
-        case 'calculator1':
-            $page = "calculators/select";
-            $operation = $_POST['operation'];
-            $x = isset($_POST['firstNumber']) ? (int)$_POST['firstNumber'] : 0;
-            $y = isset($_POST['secondNumber']) ? (int)$_POST['secondNumber'] : 0;
-            $result = $operation ? mathOperation($x, $y, $operation) : null;
-            $params = [
-                'menu' => $menu,
-                'x' => $x,
-                'y' => $y,
-                'result' => $result,
-            ];
-            renderPages($page, $params);
-            break;
-        case 'calculator2':
-            $page = "calculators/input";
-            renderPages($page, [
-                'menu' => $menu,
-            ]);
-            break;
+
         case 'reviews':
             $page = "reviews/reviews";
             $reviews =  get_db_result("SELECT * FROM " . REVIEWS . " ORDER BY id DESC");
