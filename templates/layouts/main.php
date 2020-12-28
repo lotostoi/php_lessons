@@ -7,8 +7,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Document</title>
-    <link href="/src/css/2.css" rel="stylesheet" />
-    <link href="/src/css/index~748942c6.css" rel="stylesheet" />
+    <link href="/src/css/1c9514898c64cce414946.css" rel="stylesheet" />
+    <link href="/src/css/index~748942c6c9514898c64cce414946.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -16,7 +16,7 @@
     <?= $header ?>
     <?= $content ?>
 
-    <footer class="footer wrapper" id="contats">
+    <footer class="footer wrapper" id="contacts">
         <div class="footer__filter">
             <div class="footer__cont">
                 <h3 class="footer__title">Мои контакты_</h3>
@@ -39,7 +39,7 @@
         </div>
     </footer>
     <script src="/src/js/vendors~index~9b1fde68.bundle.js"></script>
-    <script src="/src/js/vendors~index~a42cdfd3.bundle.js"></script>
+    <script src="/src/js/vendors~index~5b2bc187.bundle.js"></script>
     <script src="/src/js/index~748942c6.bundle.js"></script>
 </body>
 

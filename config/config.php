@@ -9,7 +9,7 @@ define("SMALL", "src/smallimages/");
 
 // const for data base
 
-define("HOST", "localhost:3306");
+define("HOST", "localhost:3307");
 define("USER", "lotos");
 define("PASS", "XrTA2B2Igm3AzBPR");
 define("DB_NAME", "my_portfolio");

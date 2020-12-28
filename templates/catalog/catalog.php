@@ -1,4 +1,4 @@
-<section class="portfolio wrapper" id="contats">
+<section class="portfolio wrapper" >
     <div class="portfolio-header__fone">
         <div class="portfolio-header__cont">
             <h1 class="portfolio-header__h1">Мои проекты_</h1>

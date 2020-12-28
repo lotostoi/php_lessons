@@ -1,4 +1,4 @@
-<section class="reviews wrapper" id="contats">
+<section class="reviews wrapper" >
     <div class="reviews-header__fone">
       <div class="reviews-header__cont">
         <h1 class="reviews-header__h1">Отзывы_</h1>

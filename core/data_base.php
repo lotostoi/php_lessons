@@ -8,7 +8,7 @@ function connect_db()
     return $link;
 }
 
-function get_db_result($request)
+function get_assoc_result($request)
 {
     $result = @mysqli_query(connect_db(), $request) or die(mysqli_error(connect_db()));
     $array_result = [];
@@ -18,7 +18,7 @@ function get_db_result($request)
     return $array_result;
 }
 
-function update_db($request)
+function execute($request)
 {
     @mysqli_query(connect_db(), $request) or die(mysqli_error(connect_db()));
     return mysqli_affected_rows(connect_db());

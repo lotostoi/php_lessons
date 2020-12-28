@@ -13,4 +13,7 @@ if (strstr($action, '?')) {
 if (strstr($page, '?')) {
     $page =  explode('?', $page)[0];
 }
-strpos($page, 'api-') !== false ? server($page) : renderPage($page, $action);
+
+$params = getParams($page, $action);
+
+renderPages($params);

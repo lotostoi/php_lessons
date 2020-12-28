@@ -13,13 +13,18 @@ function renderTemplate($page, array $fields = [])
     return ob_get_clean();
 }
 
-function renderPages($page, $params)
+function renderPages(array $params)
 {
-    $fields = [
-        'header' => renderTemplate('header', $params),
-        'content' => renderTemplate($page, $params)
-    ];
-    echo renderTemplate('layouts/main', $fields);
+    extract($params);
+    if ($layout) {
+        $fields = [
+            'header' => renderTemplate('header', $params),
+            'content' => renderTemplate($page, $params)
+        ];
+        echo renderTemplate($layout, $fields);
+    } else {
+        api($page);
+    }
 }
 
 function api($page)
@@ -28,8 +33,9 @@ function api($page)
     include $fileName;
 }
 
-function renderPage($page, $action)
+function getParams($page, $action)
 {
+    $layout = strpos($page, 'api-') === false ? 'layouts/main' : null;
     $menu = compilateMenu(menu());
     switch ($page) {
         case 'index':
@@ -37,18 +43,17 @@ function renderPage($page, $action)
                 'menu' => $menu,
                 'title' => 'Главная'
             ];
-            renderPages($page, $params);
             break;
 
         case 'reviews':
             $page = "reviews/reviews";
-            $reviews =  get_db_result("SELECT * FROM " . REVIEWS . " ORDER BY id DESC");
+            $reviews =  get_assoc_result("SELECT * FROM " . REVIEWS . " ORDER BY id DESC");
             $params = [
                 'menu' => $menu,
                 'reviews' => $reviews
             ];
-            renderPages($page, $params);
             break;
+
         case 'catalog':
             switch ($action) {
                 case 'get':
@@ -65,30 +70,27 @@ function renderPage($page, $action)
                     break;
             }
             $params = catalogActions($action);
-            renderPages($page, $params);
             break;
+
         case 'work':
             $page = "catalog/work";
-            $id = $_GET['id'];
+            $id = protect($_GET['id']);
             $params = [
                 'menu' => $menu,
-                'work' => get_db_result("SELECT * FROM " . WORKS . " WHERE id=$id")[0],
+                'work' => get_assoc_result("SELECT * FROM " . WORKS . " WHERE id=$id")[0],
                 'errors' => $_POST['errors']
             ];
-            renderPages($page, $params);
-    }
-}
-
-function server($page)
-{
-    switch ($page) {
-        case 'api-calculator':
-            $page = 'calculator';
-            api($page);
             break;
         case 'api-reviews':
             $page = 'reviews';
-            api($page);
+            break;
+        case 'api-auth':
+            $page = 'auth';
             break;
     }
+    return [
+        'layout' => $layout,
+        'page' => $page,
+        'params' => $params
+    ];
 }

@@ -17,7 +17,7 @@ function catalogActions($action)
             }
             $params = [
                 'menu' => $menu,
-                'tags' => get_db_result("SELECT name FROM " . TAGS),
+                'tags' => get_assoc_result("SELECT name FROM " . TAGS),
                 'errors' => $_POST['errors']
             ];
             break;
@@ -25,7 +25,7 @@ function catalogActions($action)
             $work = getWork();
             $params = [
                 'menu' => $menu,
-                'tags' => get_db_result("SELECT name FROM " . TAGS),
+                'tags' => get_assoc_result("SELECT name FROM " . TAGS),
                 'checked' => getCheckedTags(),
                 'work' => $work,
                 'errors' => $_POST['errors']
@@ -45,7 +45,7 @@ function catalogActions($action)
 function getWork()
 {
     $id = $_GET['id'];
-    $work = get_db_result("SELECT * FROM " . WORKS . " WHERE id=$id")[0];
+    $work = get_assoc_result("SELECT * FROM " . WORKS . " WHERE id=$id")[0];
     if ((int)$_GET['order'] === 1 && (int)$_POST['order'] !== 1) {
         return $work;
     } else if ((int)$_POST['order'] === 1) {
@@ -71,13 +71,13 @@ function addWork()
     $project = protect($_POST['project']);
     $description = protect($_POST['description']);
     if ($title !== '' && $project !== '') {
-        $add = update_db("INSERT INTO " . WORKS .  " VALUES ('0','{$title}','{$img}','{$git}','{$project}','{$description}')");
+        $add = execute("INSERT INTO " . WORKS .  " VALUES ('0','{$title}','{$img}','{$git}','{$project}','{$description}')");
         if ($add) {
             $tags = getTags();
             $id_work = connect_db()->insert_id;
             foreach ($tags as $tag) {
-                $id_tag = get_db_result("SELECT id FROM " . TAGS . " WHERE name = '{$tag}'")[0]['id'];
-                update_db("INSERT INTO " . WORKS_TO_TAGS .  " VALUES ('0','{$id_work}','{$id_tag}')");
+                $id_tag = get_assoc_result("SELECT id FROM " . TAGS . " WHERE name = '{$tag}'")[0]['id'];
+                execute("INSERT INTO " . WORKS_TO_TAGS .  " VALUES ('0','{$id_work}','{$id_tag}')");
             }
         }
     }
@@ -93,12 +93,12 @@ function editWork($work)
     $project = $work['project'];
     $description =  $work['description'];
     if ($title !== '' && $project !== '') {
-        $edit = update_db("UPDATE " . WORKS . " SET title = '$title', img = '$img', git = '$git', project = '$project', description = '$description'  WHERE id=$id");
-        $delete = update_db("DELETE  FROM " . WORKS_TO_TAGS . " WHERE id_work=$id");
+        $edit = execute("UPDATE " . WORKS . " SET title = '$title', img = '$img', git = '$git', project = '$project', description = '$description'  WHERE id=$id");
+        $delete = execute("DELETE  FROM " . WORKS_TO_TAGS . " WHERE id_work=$id");
         $tags = getTags();
         foreach ($tags as $tag) {
-            $id_tag = get_db_result("SELECT id FROM " . TAGS . " WHERE name = '{$tag}'")[0]['id'];
-            update_db("INSERT INTO " . WORKS_TO_TAGS .  " VALUES ('0','{$id}','{$id_tag}')");
+            $id_tag = get_assoc_result("SELECT id FROM " . TAGS . " WHERE name = '{$tag}'")[0]['id'];
+            execute("INSERT INTO " . WORKS_TO_TAGS .  " VALUES ('0','{$id}','{$id_tag}')");
         }
     }
     header("Location: /work?id=$id&result=ok");
@@ -109,9 +109,9 @@ function deleteWork()
 {
     if ($_GET['id']) {
         $id = $_GET['id'];
-        $delete = update_db("DELETE FROM " . WORKS . " WHERE id=$id");
+        $delete = execute("DELETE FROM " . WORKS . " WHERE id=$id");
         if ($delete) {
-            $delete = update_db("DELETE  FROM " . WORKS_TO_TAGS . " WHERE id_work=$id");
+            $delete = execute("DELETE  FROM " . WORKS_TO_TAGS . " WHERE id_work=$id");
             if ($delete) {
                 header("Location: /catalog/get?del=ok");
             }
@@ -122,14 +122,14 @@ function deleteWork()
 
 function getCatalog()
 {
-    $catalog = get_db_result("SELECT * FROM " . WORKS . " ORDER BY id DESC");
+    $catalog = get_assoc_result("SELECT * FROM " . WORKS . " ORDER BY id DESC");
     foreach ($catalog as $key => $work) {
         $id = $work['id'];
-        $id_tags =  get_db_result("SELECT id_tag FROM " . WORKS_TO_TAGS . " WHERE id_work = $id");
+        $id_tags =  get_assoc_result("SELECT id_tag FROM " . WORKS_TO_TAGS . " WHERE id_work = $id");
         $tags = [];
         foreach ($id_tags as $tag) {
             $id_t = $tag['id_tag'];
-            $tag_value = get_db_result("SELECT name FROM " . TAGS . " WHERE id = $id_t")[0]['name'];
+            $tag_value = get_assoc_result("SELECT name FROM " . TAGS . " WHERE id = $id_t")[0]['name'];
             $tags[] = $tag_value . ',';
         }
         $inx = count($tags) - 1;
@@ -185,10 +185,10 @@ function getCheckedTags()
     $id = $_GET['id'];
     $checked = [];
     if ((int)$_GET['order'] === 1 && (int)$_POST['order'] !== 1) {
-        $ids_checked_tags = get_db_result("SELECT id_tag FROM " . WORKS_TO_TAGS . " WHERE id_work=$id");
+        $ids_checked_tags = get_assoc_result("SELECT id_tag FROM " . WORKS_TO_TAGS . " WHERE id_work=$id");
         foreach ($ids_checked_tags as $id) {
             $id = $id['id_tag'];
-            $tag = get_db_result("SELECT name FROM " . TAGS . " WHERE id=$id")[0]['name'];
+            $tag = get_assoc_result("SELECT name FROM " . TAGS . " WHERE id=$id")[0]['name'];
             $checked[$tag] = true;
         }
     } else if ((int)$_POST['order'] === 1) {

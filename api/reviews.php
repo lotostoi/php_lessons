@@ -10,9 +10,9 @@ switch ($_POST['operation']) {
             ]);
             die();
         }
-        $res = update_db("INSERT INTO " . REVIEWS . " VALUES ('0','{$user}','{$review}')");
+        $res = execute("INSERT INTO " . REVIEWS . " VALUES ('0','{$user}','{$review}')");
         if ($res) {
-            $reviews = get_db_result("SELECT * FROM " . REVIEWS . " ORDER BY id DESC");
+            $reviews = get_assoc_result("SELECT * FROM " . REVIEWS . " ORDER BY id DESC");
             echo json_encode([
                 'result' =>  'ok',
                 'reviews' => $reviews
@@ -22,10 +22,10 @@ switch ($_POST['operation']) {
 
     case 'delete':
         $id = (int) protect($_POST['id']);
-        $res = update_db("DELETE FROM " . REVIEWS . " WHERE id=$id ");
+        $res = execute("DELETE FROM " . REVIEWS . " WHERE id=$id ");
 
         if ($res) {
-            $reviews = get_db_result("SELECT * FROM " . REVIEWS . " ORDER BY id DESC");
+            $reviews = get_assoc_result("SELECT * FROM " . REVIEWS . " ORDER BY id DESC");
             echo json_encode([
                 'result' =>  'ok',
                 'reviews' => $reviews
@@ -35,9 +35,9 @@ switch ($_POST['operation']) {
     case 'edit':
         $review = protect($_POST['review']);
         $id = (int) protect($_POST['id']);
-        $res = update_db("UPDATE " . REVIEWS . " SET review = '$review'  WHERE id={$id}");
+        $res = execute("UPDATE " . REVIEWS . " SET review = '$review'  WHERE id={$id}");
         if ($res) {
-            $reviews = get_db_result("SELECT * FROM " . REVIEWS . " ORDER BY id DESC");
+            $reviews = get_assoc_result("SELECT * FROM " . REVIEWS . " ORDER BY id DESC");
             echo json_encode([
                 'result' =>  'ok',
                 'reviews' => $reviews
