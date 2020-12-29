@@ -1,0 +1,176 @@
+.header {
+  position: fixed;
+  color: $color-light;
+  transition: background-color 0.7s;
+  z-index: 100;
+
+  &.active {
+    background-color: white;
+    position: fixed;
+    color: $color-dark;
+    -webkit-box-shadow: 0px 10px 5px -4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 10px 5px -4px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 10px 5px -4px rgba(0, 0, 0, 0.75);
+  }
+  &__cont {
+    min-height: 75px;
+    width: 100%;
+    max-width: $max-width;
+    display: flex;
+    margin: 0 auto;
+    align-items: flex-end;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 10px 5px;
+  }
+  &__cont.active {
+    padding: 10px 5px 25px;
+  }
+  &__nav {
+    min-width: 60%;
+    display: flex;
+    height: auto;
+    justify-content: space-around;
+    & div {
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      & > a {
+        cursor: pointer;
+        margin-right: 20px;
+        position: relative;
+        list-style-type: none;
+        font-size: 14px;
+        line-height: 20px;
+        font-family: Roboto Mono, monospace;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+      & > a:hover {
+        color: $color-light-hover;
+      }
+      & > a:active {
+        color: $color-light-active;
+      }
+      & > a:hover::after {
+        position: absolute;
+        content: '_';
+        display: flex;
+        right: -10px;
+        top: 0;
+        color: $color-light-hover;
+      }
+      & > a:active::after {
+        position: absolute;
+        content: '_';
+        display: flex;
+        right: -10px;
+        top: 0;
+        color: $color-light-active;
+      }
+      & > a.active {
+        cursor: pointer;
+        position: relative;
+        list-style-type: none;
+        font-size: 14px;
+        line-height: 20px;
+        font-family: Roboto Mono, monospace;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: $color-dark-hover;
+      }
+      & > a.active:hover {
+        color: $color-dark-hover;
+      }
+      & > a.active:active {
+        color: $color-dark-active;
+      }
+      & > a.active:hover::after {
+        position: absolute;
+        content: '_';
+        display: flex;
+        right: -10px;
+        top: 0;
+        color: $color-dark-hover;
+      }
+      & > a.active:active::after {
+        position: absolute;
+        content: '_';
+        display: flex;
+        right: -10px;
+        top: 0;
+        color: $color-light-active;
+      }
+    }
+  }
+  &__search {
+    min-height: 20px;
+    display: flex;
+    & input {
+      display: flex;
+      outline: none;
+      border: none;
+      border-radius: 3px 0 0 3px;
+      padding: 0 5px;
+    }
+    & input.active {
+      border: 1px solid rgba(128, 128, 128, 0.212);
+      border-right: none;
+    }
+    & button {
+      width: 30px;
+      height: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      outline: none;
+      border: none;
+      border-radius: 0 3px 3px 0;
+    }
+  }
+  &__login {
+    display: flex;
+    & > a {
+      text-decoration: none;
+      cursor: pointer;
+      position: relative;
+      list-style-type: none;
+      font-size: 14px;
+      line-height: 20px;
+      font-family: Roboto Mono, monospace;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: $color-light;
+    }
+    & > a:hover {
+      color: $color-light-hover;
+    }
+    & > a:active {
+      color: $color-light-active;
+    }
+    & > a.hide {
+      display: none;
+    }
+    & > a.active {
+      text-decoration: none;
+      cursor: pointer;
+      position: relative;
+      list-style-type: none;
+      font-size: 14px;
+      line-height: 20px;
+      font-family: Roboto Mono, monospace;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: $color-dark;
+    }
+    & > a.active:hover {
+      color: $color-dark-hover;
+    }
+    & > a.active:active {
+      color: $color-dark-active;
+    }
+    & > a.active.hide {
+      display: none;
+    }
+  }
+}
