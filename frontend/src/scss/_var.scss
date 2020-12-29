@@ -1,5 +1,5 @@
 $max-width: 1400px;
-
+$ff: Roboto Mono, monospace;
 $color-light: white;
 $color-light-hover: rgba(255, 255, 255, 0.863);
 $color-light-active: rgba(245, 163, 11, 0.863);
@@ -11,32 +11,27 @@ $color-bright: rgba(249, 128, 7, 0.7987570028011204);
 
 @mixin bc-fone {
   & {
-    background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(1, 0, 0, 0.7987570028011204) 42%, rgba(255, 98, 0, 0.6671043417366946) 100%), url('@/img/baner.jpg');
-  }
-  /* & {
-    background: rgb(5, 3, 0);
     background: linear-gradient(
-      90deg,
-      rgba(5, 3, 0, 0.6671043417366946) 0%,
-      rgba(1, 1, 0, 1) 0%,
-      rgba(249, 7, 191, 0.49343487394957986) 100%
-    );
-  } */
+        90deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(1, 0, 0, 0.7987570028011204) 42%,
+        rgba(255, 98, 0, 0.6671043417366946) 100%
+      ),
+      url('@/img/baner.jpg');
+  }
+
 }
 @mixin bc-fone-rev {
   & {
     background: rgb(5, 3, 0);
-    background: linear-gradient(90deg, rgba(5, 3, 0, 0.6671043417366946) 0%, rgba(249, 128, 7, 0.7987570028011204) 0%, rgba(1, 1, 0, 1) 100%);
-  }
-  /*  & {
-    background: rgb(5, 3, 0);
     background: linear-gradient(
       90deg,
       rgba(5, 3, 0, 0.6671043417366946) 0%,
-      rgba(249, 7, 191, 0.49343487394957986) 0%,
+      rgba(249, 128, 7, 0.7987570028011204) 0%,
       rgba(1, 1, 0, 1) 100%
     );
-  } */
+  }
+
 }
 @mixin shadow {
   -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);

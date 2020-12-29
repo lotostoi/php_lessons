@@ -1,5 +1,5 @@
 <template>
-  <form class="person-area">
+  <form class="person-area" id="enter">
     <h2>Вход_</h2>
     <label class="login">
       <p>Введите логин или email_</p>
@@ -23,33 +23,21 @@
 
 <script>
 import http from '@/js/server'
-import Fingerprint2 from 'fingerprintjs2'
-async function fp() {
-  return new Promise(async (res) => {
-    let cb = async () => Fingerprint2.getV18({}, res)
-    if (window.requestIdleCallback) {
-      requestIdleCallback(cb)
-    } else {
-      setTimeout(cb, 500)
-    }
-  })
-}
 
 export default {
   data: () => ({
     error: null,
   }),
-  async created() {
-      this.fp =  await fp()
-  },
   methods: {
     async enter() {
       try {
-        const el = this.$el
         const body = new FormData(this.$el)
-        body.append('fp', this.fp)
         const res = await http.post('api-auth', body)
         this.error = 'error' in res ? true : null
+        if (res.result) {
+          console.log('test')
+          window.location = '/'
+        }
       } catch (e) {
         console.log(e)
       }
@@ -213,6 +201,26 @@ $color-bright: rgba(249, 128, 7, 0.7987570028011204);
   .error {
     background-color: rgba(255, 0, 0, 0.205);
     border-color: red;
+  }
+  & .field {
+    margin: 20px 0;
+    display: flex;
+    width: 100%;
+    max-width: 700px;
+    align-items: center;
+    justify-content: flex-start;
+    & .title {
+      display: flex;
+      color: $color-dark;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    & .value {
+      display: flex;
+      color: $color-dark;
+      font-size: 1.5rem;
+      margin-left: 20px;
+    }
   }
 }
 </style>

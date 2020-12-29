@@ -38,6 +38,7 @@
     @include grayShadow;
     border-radius: 20px;
     font-size: 1.3rem;
+    color: $color-light;
     @include bc-fone;
     & i {
       margin-right: 5px;

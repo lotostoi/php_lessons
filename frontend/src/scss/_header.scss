@@ -5,7 +5,7 @@
   z-index: 100;
 
   &.active {
-    background-color: white;
+    background-color: rgb(26, 25, 25);
     position: fixed;
     color: $color-dark;
     -webkit-box-shadow: 0px 10px 5px -4px rgba(0, 0, 0, 0.75);
@@ -42,9 +42,11 @@
         list-style-type: none;
         font-size: 14px;
         line-height: 20px;
-        font-family: Roboto Mono, monospace;
+        font-family: $ff;
         text-transform: uppercase;
         font-weight: 700;
+        text-decoration: none;
+        color: $color-light;
       }
       & > a:hover {
         color: $color-light-hover;
@@ -74,16 +76,16 @@
         list-style-type: none;
         font-size: 14px;
         line-height: 20px;
-        font-family: Roboto Mono, monospace;
+        font-family: $ff;
         text-transform: uppercase;
         font-weight: 700;
-        color: $color-dark-hover;
+        color: $color-light-hover;
       }
       & > a.active:hover {
-        color: $color-dark-hover;
+        color: $color-light-hover;
       }
       & > a.active:active {
-        color: $color-dark-active;
+        color: $color-light-active;
       }
       & > a.active:hover::after {
         position: absolute;
@@ -91,7 +93,7 @@
         display: flex;
         right: -10px;
         top: 0;
-        color: $color-dark-hover;
+        color: $color-light-hover;
       }
       & > a.active:active::after {
         position: absolute;
@@ -137,7 +139,7 @@
       list-style-type: none;
       font-size: 14px;
       line-height: 20px;
-      font-family: Roboto Mono, monospace;
+      font-family: $ff;
       text-transform: uppercase;
       font-weight: 700;
       color: $color-light;
@@ -158,16 +160,16 @@
       list-style-type: none;
       font-size: 14px;
       line-height: 20px;
-      font-family: Roboto Mono, monospace;
+      font-family: $ff;
       text-transform: uppercase;
       font-weight: 700;
-      color: $color-dark;
+      color: $color-light;
     }
     & > a.active:hover {
-      color: $color-dark-hover;
+      color: $color-light-hover;
     }
     & > a.active:active {
-      color: $color-dark-active;
+      color: $color-light-active;
     }
     & > a.active.hide {
       display: none;

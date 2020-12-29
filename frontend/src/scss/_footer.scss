@@ -61,8 +61,9 @@
         list-style-type: none;
         font-size: 14px;
         line-height: 20px;
-        font-family: Roboto Mono, monospace;
+        font-family: $ff;
         font-weight: 700;
+        color: $color-light;
       }
       & > a:hover {
         color: $color-light-hover;
@@ -168,6 +169,6 @@
     justify-content: center;
     margin: 40px 0 10px;
     font-size: 1.3rem;
-    color: $color-light-grey
+    color: $color-light-grey;
   }
 }
