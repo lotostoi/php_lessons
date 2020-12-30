@@ -36,22 +36,16 @@ function api($page)
 function getParams($page, $action)
 {
     $layout = strpos($page, 'api-') === false ? 'layouts/main' : null;
-    $menu = compilateMenu(menu());
+    $params['menu'] = compilateMenu(menu());
+    $params['user'] = getUser();
     switch ($page) {
         case 'index':
-            $params = [
-                'menu' => $menu,
-                'title' => 'Главная'
-            ];
+            $params['title'] = 'Главная';
             break;
-
         case 'reviews':
             $page = "reviews/reviews";
             $reviews =  get_assoc_result("SELECT * FROM " . REVIEWS . " ORDER BY id DESC");
-            $params = [
-                'menu' => $menu,
-                'reviews' => $reviews
-            ];
+            $params['reviews'] = $reviews;
             break;
 
         case 'catalog':
@@ -69,21 +63,38 @@ function getParams($page, $action)
                     $page = "admin/catalog/edit-work";
                     break;
             }
-            $params = catalogActions($action);
+            $params = array_merge($params, catalogActions($action));
             break;
 
         case 'work':
             $page = "catalog/work";
             $id = protect($_GET['id']);
-            $params = [
-                'menu' => $menu,
-                'work' => get_assoc_result("SELECT * FROM " . WORKS . " WHERE id=$id")[0],
-                'errors' => $_POST['errors']
-            ];
+            $params['work'] = get_assoc_result("SELECT * FROM " . WORKS . " WHERE id=$id")[0];
+            $params['errors'] =  $_POST['errors'];
             break;
+            
+        case 'auth':
+            $page = "auth/enter";
+              switch ($action) {
+                case 'enter':
+                    $page = "auth/enter";
+                    break;
+                case 'logout':
+                    $page = "auth/logout";
+                    break;
+                case 'edit':
+                    $page = "admin/catalog/edit-work";
+                    break;
+                case 'delete':
+                    $page = "admin/catalog/edit-work";
+                    break;
+            } 
+            break;
+
         case 'api-reviews':
             $page = 'reviews';
             break;
+
         case 'api-auth':
             $page = 'auth';
             break;

@@ -12,6 +12,12 @@
         <form action="" class="header__search">
             <input type="input" name="search" class="modif" /> <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
         </form>
-        <div class="header__login"><a href="#" data-id="entre" class="modif">Войти</a> <a href="#" data-id="user" class="hide modif">Admin</a></div>
+        <div class="header__login">
+            <?php if (!$user) : ?>
+                <a href="/auth/enter" data-id="entre" class="modif">Войти</a>
+            <?php else : ?>
+                <a href="/auth/logout" data-id="user" class="modif"><?=$user?></a>
+            <?php endif; ?>
+        </div>
     </div>
 </header>

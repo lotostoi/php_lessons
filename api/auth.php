@@ -1,10 +1,16 @@
 <?php
+session_start();
 error_reporting(0);
-$action = protect($_POST['action']);
+$action = '';
+if (!empty($_POST['action'])) {
+    $action = $_POST['action'];
+}
+if (!empty($_GET['action'])) {
+    $action = $_GET['action'];
+}
 switch ($action) {
     case 'enter':
         if (!isset($_SESSION['user'])) {
-            $fp = protect($_POST['fp']);
             $save = protect($_POST['save']);
             $login = trim(protect($_POST['login']));
             $password = protect($_POST['password']);
@@ -14,16 +20,15 @@ switch ($action) {
             $id = $user['id'];
             if ($user) {
                 if (password_verify($password, $user['password'])) {
-                    if (!$save) {
-                        session_start();
-                        $_SESSION['user'] = $login;
-                        $_SESSION['user_id'] = $user['id'];
-                        echo json_encode(['result' => 'ok']);
-                    } else {     
+                    $_SESSION['user'] = $login;
+                    $_SESSION['user_id'] = $user['id'];
+                    $_SESSION['user_email'] = $user['email'];
+                    if ($save) {
                         $hash = uniqid(rand(), true);
-                        $setHashAndFp = execute("INSERT INTO 'hash_and_fp' VALUES (null,$id, $hash, $fp)");
-                        setcookie("hash", "$hash", time() + 900, "/");
+                        $setHashAndFp = execute("INSERT INTO hashes VALUES (null,'$id', '$hash')");
+                        setcookie("hash", "$hash", time() + 60 * 60 * 24 * 30, "/");
                     }
+                    echo json_encode(['result' => 'ok']);
                 } else {
                     echo json_encode(['error' => 'ok']);
                 }
@@ -31,5 +36,23 @@ switch ($action) {
                 echo json_encode(['error' => 'ok']);
             }
         }
+        break;
+    case 'check':
+        if (getUser()) {
+            echo json_encode([
+                'user' => getUser(),
+                'email' => getUserEmail()
+            ]);
+            die();
+        }
+        echo json_encode(['error' => 'ok']);
+        break;
+    case 'logout':
+        if (getUser()) {
+            session_destroy();
+            echo json_encode(['result' => 'ok']);
+            die();
+        }
+        echo json_encode(['error' => 'ok']);
         break;
 }
