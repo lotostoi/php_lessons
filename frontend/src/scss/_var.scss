@@ -4,7 +4,7 @@ $color-light: white;
 $color-light-hover: rgba(255, 255, 255, 0.863);
 $color-light-active: rgba(245, 163, 11, 0.863);
 $color-dark: rgb(51, 50, 50);
-$color-dark-hover: rgb(7, 4, 0);
+$color-dark-hover: rgb(189, 77, 3);
 $color-dark-active: rgba(245, 163, 11, 0.979);
 $color-light-grey: rgba(199, 198, 198, 0.685);
 $color-bright: rgba(249, 128, 7, 0.7987570028011204);
@@ -17,7 +17,7 @@ $color-bright: rgba(249, 128, 7, 0.7987570028011204);
         rgba(1, 0, 0, 0.7987570028011204) 42%,
         rgba(255, 98, 0, 0.6671043417366946) 100%
       ),
-      url('@/img/baner.jpg');
+      url('../img/baner.jpg');
   }
 
 }
@@ -29,7 +29,8 @@ $color-bright: rgba(249, 128, 7, 0.7987570028011204);
       rgba(5, 3, 0, 0.6671043417366946) 0%,
       rgba(249, 128, 7, 0.7987570028011204) 0%,
       rgba(1, 1, 0, 1) 100%
-    );
+    ),
+    url('../img/baner.jpg');
   }
 
 }
@@ -40,9 +41,9 @@ $color-bright: rgba(249, 128, 7, 0.7987570028011204);
 }
 @mixin shadow-bot {
   & {
-    -webkit-box-shadow: 0px 5px 3px -2px rgba(0, 0, 0, 0.48);
-    -moz-box-shadow: 0px 5px 3px -2px rgba(0, 0, 0, 0.48);
-    box-shadow: 0px 5px 3px -2px rgba(0, 0, 0, 0.48);
+    -webkit-box-shadow: 10px 10px 5px -8px rgba(117,117,117,1);
+    -moz-box-shadow: 10px 10px 5px -8px rgba(117,117,117,1);
+    box-shadow: 10px 10px 5px -8px rgba(117,117,117,1);
   }
 }
 

@@ -19,7 +19,8 @@ function renderPages(array $params)
     if ($layout) {
         $fields = [
             'header' => renderTemplate('header', $params),
-            'content' => renderTemplate($page, $params)
+            'content' => renderTemplate($page, $params),
+            'footer' => renderTemplate('footer/footer', $params)
         ];
         echo renderTemplate($layout, $fields);
     } else {
@@ -37,15 +38,19 @@ function getParams($page, $action)
 {
     $layout = strpos($page, 'api-') === false ? 'layouts/main' : null;
     $params['menu'] = compilateMenu(menu());
-    $params['user'] = getUser();
+    $params['user'] = getUser()['login'];
     switch ($page) {
         case 'index':
             $params['title'] = 'Главная';
             break;
-        case 'reviews':
+        case 'reviews';
+            review_control();
             $page = "reviews/reviews";
             $reviews =  get_assoc_result("SELECT * FROM " . REVIEWS . " ORDER BY id DESC");
             $params['reviews'] = $reviews;
+            $params['empty'] =  $_SESSION['error_review']['empty'];
+            $params['admin'] =  isAccessUser();
+            $_SESSION['error_review']['empty'] = false;
             break;
 
         case 'catalog':
@@ -54,12 +59,15 @@ function getParams($page, $action)
                     $page = "catalog/catalog";
                     break;
                 case 'add':
+                    redirect();
                     $page = "admin/catalog/add-work";
                     break;
                 case 'edit':
+                    redirect();
                     $page = "admin/catalog/edit-work";
                     break;
                 case 'delete':
+                    redirect();
                     $page = "admin/catalog/edit-work";
                     break;
             }
@@ -71,32 +79,41 @@ function getParams($page, $action)
             $id = protect($_GET['id']);
             $params['work'] = get_assoc_result("SELECT * FROM " . WORKS . " WHERE id=$id")[0];
             $params['errors'] =  $_POST['errors'];
+            $params['admin'] =  isAccessUser();
             break;
-            
+        case 'resume':
+            $page = "resume/resume";
+            break;
+
         case 'auth':
             $page = "auth/enter";
-              switch ($action) {
+            switch ($action) {
                 case 'enter':
+                    enter_control();
                     $page = "auth/enter";
+                    $params['error'] = $_SESSION['auth_error'];
+                    $_SESSION['auth_error'] = null;
                     break;
                 case 'logout':
+                    redirect();
+                    auth_control();
+                    $params['full_user'] = getUser();
                     $page = "auth/logout";
                     break;
-                case 'edit':
-                    $page = "admin/catalog/edit-work";
-                    break;
-                case 'delete':
-                    $page = "admin/catalog/edit-work";
-                    break;
-            } 
+            }
             break;
 
         case 'api-reviews':
             $page = 'reviews';
             break;
-
         case 'api-auth':
             $page = 'auth';
+            break;
+        case 'api-auth-vk':
+            $page = 'auth-vk';
+            break;
+        case 'api-auth-fb':
+            $page = 'auth-fb';
             break;
     }
     return [

@@ -20,6 +20,9 @@ body {
   flex-direction: column;
 }
 
+@import 'work';
+@import "person-area";
+@import 'admin-catalog';
 @import 'common';
 @import 'header';
 @import 'aboutMe';

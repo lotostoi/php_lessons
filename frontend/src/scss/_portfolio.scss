@@ -64,9 +64,10 @@
       & > button {
         outline: none;
         padding: 10px;
-        background-image: url('@/img/fonforlittelelem.jpg');
+        background-image: url('../img/fonforlittelelem.jpg');
         background-size: contain;
         background: rgb(0, 0, 0);
+        color: $color-light;
         border: none;
 
         @include grayShadow;
@@ -75,11 +76,9 @@
         @include bc-fone;
         margin: 10px;
         box-sizing: border-box;
-        & i {
-          margin-right: 5px;
-        }
-        &:hover i {
-          animation: top-bot 1s linear infinite;
+    
+        &:hover  {
+          @include bc-fone-rev;
         }
         &:active {
           transform: scale(0.99);

@@ -20,7 +20,7 @@ const conf = {
     index: './js/main.js',
   },
   output: {
-    publicPath: !isProduction ? '/' : '/src',
+    publicPath: !isProduction ? '/' : '/src/',
     filename: 'js/[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
@@ -53,9 +53,6 @@ const conf = {
         use: [
           {
             loader: isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
-            /*  options: {
-              publicPath: !isProduction ? '/' : '/src/css',
-            }, */
           },
           'css-loader',
         ],
@@ -65,16 +62,11 @@ const conf = {
         use: [
           {
             loader: isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
-            options: {
-              //  publicPath: !isProduction ? '' : '../src',
-              //  outputPath: 'css/[name][hash].css',
-            },
           },
           'css-loader',
           'sass-loader',
         ],
-        // include: path.resolve(__dirname, 'src/scss/**.scss'),
-        sideEffects: true,
+       // sideEffects: true,
       },
       {
         test: /\.js$/,
@@ -90,8 +82,7 @@ const conf = {
             loader: 'url-loader',
             options: {
               limit: 100000,
-              publicPath: !isProduction ? '/' : '/src',
-              outputPath: 'img/',
+              outputPath: 'img/', 
             },
           },
         ],
@@ -115,12 +106,12 @@ const conf = {
     hints: false,
   },
   optimization: {
-    splitChunks: {
+ /*    splitChunks: {
       // include all types of chunks
-      chunks: 'all',
+     // chunks: 'all',
       minSize: 10000,
       maxSize: 250000,
-    },
+    }, */
     minimize: isProduction,
     minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
   },
@@ -131,16 +122,12 @@ const conf = {
       // Options similar to the same options in webpackOptions.output
       // both options are optional
       filename: 'css/[name][hash].css',
-      chunkFilename: 'css/[id][hash].css',
+   //   chunkFilename: 'css/[id][hash].css',
     }),
     new HTML({
       template: 'index.html',
-      minify: isProduction,
+      minify: false,
     }),
-    /*     new HTML({
-      template: 'portfolio.html',
-      minify: isProduction,
-    }), */
     new CopyPlugin({
       patterns: [{ from: '.htaccess' }, { from: 'favicon.ico' }],
     }),

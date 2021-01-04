@@ -1,0 +1,41 @@
+.work {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+    margin-top: 10px;
+    box-sizing: border-box;
+   // border: 1px solid rgb(216, 216, 216);
+    position: relative;
+    &__edit {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+    &__img {
+      margin: 20px 0;
+      width: 50%;
+      & > img {
+        width: 100%;
+        border: 1px solid rgb(216, 216, 216);
+      }
+    }
+    &__title {
+      font-family: $ff;
+      margin-bottom: 20px;
+    }
+    &__description {
+      font-family: $ff;
+      font-size: 1.2rem;
+      line-height: 35px;
+      margin-bottom: 20px;
+    }
+    &__a {
+      font-family: $ff;
+      font-size: 1.2rem;
+      line-height: 35px;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+  }
+  

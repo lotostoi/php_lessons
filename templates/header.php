@@ -3,7 +3,7 @@
         <nav class="header__nav">
             <div>
                 <a href="/" class="modif">Главная</a>
-                <a href="/#resume" class="modif">Резюме</a>
+                <a href="/resume" class="modif">Резюме</a>
                 <a href="/catalog/get" class="modif">Портфолио</a>
                 <a href="/reviews" class="modif">Отзывы</a>
                 <a href="#contacts" class="modif">Контакты</a>

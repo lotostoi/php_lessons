@@ -1,9 +1,14 @@
+.hiden {
+  display: none !important;
+}
+
 .reviews {
   display: flex;
   border-bottom: 1px solid rgba(128, 128, 128, 0.13);
   color: $color-dark;
   display: flex;
   color: $color-light;
+
   &-header__fone {
     @include bc-fone;
   }
@@ -35,6 +40,47 @@
     height: 100%;
     max-width: $max-width;
     margin: 0 auto;
+  }
+  &-body__enter {
+    width: 100%;
+    color: gray;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    border-bottom: 1px solid rgb(207, 207, 207);
+    padding: 20px;
+    & > p.title {
+      display: flex;
+      margin: 10px 0 0;
+      color: $color-dark;
+      font-size: 1.2rem;
+    }
+    & > .social-network {
+      width: 100%;
+      max-width: 700px;
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+      & > .list {
+        display: flex;
+        & > a {
+          margin-right: 30px;
+          display: flex;
+          text-decoration: none;
+          & > i {
+            font-size: 3rem;
+            color: rgb(0, 132, 255);
+          }
+          & > i:hover {
+            color: $color-dark-hover;
+          }
+          & > i:active {
+            color: $color-dark-active;
+          }
+        }
+      }
+    }
   }
 
   &-body__form {
@@ -68,31 +114,54 @@
         padding: 10px;
         width: 70%;
         min-height: 100px;
-        margin: 0;
+        margin: 20px 0;
         display: flex;
         outline: none;
-        border-radius: 5px;
+        border-radius: 2px;
         font-size: 1.2rem;
         color: $color-dark;
+        border-color: rgba(128, 128, 128, 0.219);
+        background-color: rgba(128, 70, 3, 0.075);
         @include placeholder {
           font-size: 1.2rem;
           color: $color-dark;
         }
       }
     }
-    & > p {
+    & > p.message {
       margin-bottom: -10px;
       padding: 10px 0;
-      font-size: 1.2rem;
-      color: $color-dark;
+      font-size: 1rem;
+      font-style: italic;
+      color: red;
     }
     & > button {
-      margin: 10px 0;
-      width: 20%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      width: 200px;
       outline: none;
-      min-height: 40px;
-      color: $color-dark;
-      font-size: 1.5rem;
+      padding: 10px;
+      background-image: url('../img/fonforlittelelem.jpg');
+      background-size: contain;
+      background: rgb(0, 0, 0);
+      color: $color-light;
+      border: none;
+
+      @include grayShadow;
+      border-radius: 3px;
+      font-size: 1rem;
+      @include bc-fone;
+      margin: 10px 0;
+      box-sizing: border-box;
+
+      &:hover {
+        @include bc-fone-rev;
+      }
+      &:active {
+        transform: scale(0.99);
+      }
     }
   }
   &-body__wrapper {
@@ -100,20 +169,48 @@
     display: flex;
     flex-direction: column;
     background-color: transparent;
-    //  background-color: rgb(214, 211, 211);
     padding: 20px;
   }
   &-body__review {
+    padding: 10px;
     width: 100%;
     display: flex;
     margin: 10px 0;
     border-bottom: 1px solid rgb(240, 238, 238);
     justify-content: space-between;
+    background-color: rgba(128, 70, 3, 0.075);
+    border-top: 1px solid rgba(199, 198, 198, 0.13);
+    border-left: 1px solid rgba(199, 198, 198, 0.13);
+    @include shadow-bot;
+    border-radius: 0 0 5px 0;
     & > .user {
       width: 80%;
       display: flex;
       flex-direction: column;
+      & > .nick {
+        display: flex;
+        align-items: center;
+        & > img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          border: 1px solid rgb(197, 197, 197);
+        }
+        & > a {
+          margin-left: 20px;
+          font-size: 1.2rem;
+          color: $color-dark;
+          text-decoration: none;
+        }
+        & > a:hover {
+          color: $color-dark-hover;
+        }
+        & > a:active {
+          color: $color-dark-active;
+        }
+      }
       & > p {
+        background-color: transparent;
         font-size: 1.2rem;
         color: $color-dark;
         & > span {
@@ -121,10 +218,10 @@
         }
       }
       & > .review {
+        background-color: transparent;
         border-radius: 3px;
         margin: 5px 0;
         padding: 5px;
-        background-color: white;
         display: flex;
         flex-direction: column;
         font-style: italic;
@@ -140,6 +237,8 @@
         outline: none;
         border-radius: 5px;
         font-size: 1.2rem;
+        background-color: white;
+        border-color: rgb(211, 211, 211);
         @include placeholder {
           font-size: 1.2rem;
           color: $color-dark;
@@ -150,13 +249,30 @@
       display: flex;
       flex-direction: column;
       & > button {
-        display: flex;
-        justify-content: center;
-        align-items: center;
         width: 50px;
-        height: 30px;
-        margin: 5px;
-        color: $color-dark;
+        outline: none;
+        padding: 10px;
+        background-image: url('../img/fonforlittelelem.jpg');
+        background-size: contain;
+        background: rgb(0, 0, 0);
+        color: $color-light;
+        border: none;
+        @include grayShadow;
+        border-radius: 20px;
+        font-size: 1rem;
+        @include bc-fone;
+        margin: 10px;
+        box-sizing: border-box;
+        & > i {
+          pointer-events: none;
+        }
+
+        &:hover {
+          @include bc-fone-rev;
+        }
+        &:active {
+          transform: scale(0.99);
+        }
       }
     }
   }

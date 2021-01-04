@@ -3,10 +3,12 @@ function catalogActions($action)
 {
     $params = [];
     $menu = compilateMenu(menu());
+    $admin = isAccessUser();
     switch ($action) {
         case 'get':
             $params = [
                 'menu' => $menu,
+                'admin' => $admin,
                 'catalog' => getCatalog()
             ];
             break;
@@ -17,6 +19,7 @@ function catalogActions($action)
             }
             $params = [
                 'menu' => $menu,
+                'admin' => $admin,
                 'tags' => get_assoc_result("SELECT name FROM " . TAGS),
                 'errors' => $_POST['errors']
             ];
@@ -25,6 +28,7 @@ function catalogActions($action)
             $work = getWork();
             $params = [
                 'menu' => $menu,
+                'admin' => $admin,
                 'tags' => get_assoc_result("SELECT name FROM " . TAGS),
                 'checked' => getCheckedTags(),
                 'work' => $work,

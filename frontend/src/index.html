@@ -265,43 +265,28 @@
       </div>
     </div>
     <div class="reviews-body">
-      <form action="" class="reviews-body__form" id="reviews">
-        <label>
-          <span>
-            Input login:
-          </span>
-          <input type="text" id="login" name="user" placeholder="Your name">
-        </label>
-        <label>
-          <span>
-            Input review:
-          </span>
-          <textarea type="text" name="review" placeholder="Your review"></textarea>
-        </label>
-        <p style="display: none; color: red;" class="message">Login or review are empty!</p>
-        <button type="submit"> Add reviews </button>
-      </form>
-      <div class="reviews-body__wrapper">
-        <?php foreach ($reviews as $review) : ?>
-        <div class="reviews-body__review">
-          <div class="user">
-            <p>User's name: <span>
-                <?= $review['user'] ?>
-              </span></p>
-            <p class="review" data-id="<?= $review['id'] ?>">
-              <?= $review['review'] ?>
-            </p>
-            <textarea class="edit_review" style="display:none" type="text" name="edit_review"
-              data-review="<?= $review['id'] ?>"><?= $review['review'] ?></textarea>
-          </div>
-          <div class="edit">
-            <button class='review_edit' data-edit="<?= $review['id'] ?>"> Edit</button>
-            <button style="display:none" class='save_review' data-save="<?= $review['id'] ?>"> Save</button>
-            <button class='review_del' data-id="<?= $review['id'] ?>">X</button>
-          </div>
-        </div>
-        <?php endforeach; ?>
+      <auth-content></auth-content>
+    </div>
+  </section>
+  <section class="common wrapper">
+    <div class="common-header__fone">
+      <div class="common-header__cont">
+        <h1 class="common-header__h1">Пример верстки_</h1>
       </div>
+    </div>
+    <div class="common-body">
+      <div class="work">
+   <!--          <?php if ($_GET['result'] === 'ok') : ?>
+                <p class="result_loader"  > Работа была успешно отредактированна!</p>
+            <?php endif; ?> -->
+            <a href="./catalog/edit?id=<?= $work['id'] ?>&order=1" class="link__outside">Edit this work</a>
+            <div class="work__img">
+                <img src="./img/big.png" alt="name" class="big-picture__img">
+            </div>
+            <p class="work__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque, laborum ratione sequi doloribus, earum modi, possimus alias dignissimos nisi sit dolorum. Maiores atque sint natus accusamus, laudantium iste commodi possimus dicta quidem odio minus omnis totam quis nesciunt reprehenderit molestiae nemo corporis quia qui vel voluptate at. Aspernatur provident eos, porro minus nam animi praesentium assumenda tempore sunt suscipit error quo modi obcaecati dolores recusandae, optio cumque facilis asperiores rem blanditiis quia. Tenetur temporibus ratione nobis praesentium mollitia, facilis sequi! Iste atque ut eligendi numquam voluptatibus aspernatur molestiae, ad officia, minima rem, libero expedita sapiente. Quidem delectus, atque expedita labore ullam dicta maiores iure odit sequi ratione minus, quibusdam voluptate tempora recusandae provident similique pariatur quos doloremque nihil error. Omnis laboriosam ut totam ratione. Rerum illum aspernatur commodi tempora eaque maxime ab illo numquam, vitae debitis, quos delectus tempore, magni deserunt aut provident reiciendis quaerat repellat fugit distinctio temporibus neque? Minima, possimus. Magnam reprehenderit dicta deserunt magni exercitationem cum, culpa debitis sit. Maiores fugit laborum minima? Quam possimus suscipit deleniti, ut porro non consectetur dolore molestias voluptate, quisquam maxime perferendis aperiam, eveniet ipsa. Maiores culpa, consectetur, fugiat delectus ad, iure veniam architecto dolor error rem autem voluptatibus ipsam. Delectus, doloribus.</p>
+            <a href="<?= $work['git'] ?>" class="work__a">Посмотреть код.. </a>
+            <a href="<?= $work['project'] ?>" class="work__a">Посмотреть проект...</a>
+        </div>
     </div>
   </section>
   <section class="common wrapper">
@@ -328,6 +313,7 @@
       </div>
     </div>
   </section>
+ 
 
   <footer class="footer wrapper" id="contacts">
     <div class="footer__filter">

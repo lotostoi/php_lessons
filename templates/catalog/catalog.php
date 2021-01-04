@@ -1,4 +1,4 @@
-<section class="portfolio wrapper" >
+<section class="portfolio wrapper">
     <div class="portfolio-header__fone">
         <div class="portfolio-header__cont">
             <h1 class="portfolio-header__h1">Мои проекты_</h1>
@@ -19,10 +19,12 @@
         </div>
     </div>
     <div class="portfolio-catalog">
-        <?php if ($_GET['del'] === 'ok') : ?>
+        <?php if ($_GET['del'] === 'ok' && $admin) : ?>
             <p class="result_loader">Работа была удалена успешно...</p>
         <?php endif; ?>
-        <a href="/catalog/add" class="portfolio-catalog__outside">Add work</a>
+        <?php if ($admin) : ?>
+            <a href="/catalog/add" class="portfolio-catalog__outside">Add work</a>
+        <?php endif; ?>
         <h1 class="portfolio-catalog__h1">Catalog</h1>
         <div class="portfolio-catalog__cont">
             <?php foreach ($catalog as $work) : ?>

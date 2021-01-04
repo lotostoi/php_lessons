@@ -6,7 +6,29 @@
     </div>
     <div class="common-body">
         <div class="auth-logout">
-            <auth-content></auth-content>
+            <form class="person-area" method="POST">
+                <div class="img">
+                    <img src="<?= $full_user['img_big'] ?>" alt="user-image" />
+                </div>
+                <div class="field">
+                    <span class="title">Login:</span>
+                    <span class="value"><?= $full_user['login'] ?></span>
+                </div>
+                <div class="field">
+                    <span class="title">Имя:</span>
+                    <span class="value"><?= $full_user['first_name'] ?></span>
+                </div>
+                <div class="field">
+                    <span class="title">Фамилия:</span>
+                    <span class="value"><?= $full_user['last_name'] ?></span>
+                </div>
+                <div class="field">
+                    <span class="title">Email:</span>
+                    <span class="value"><?= $full_user['email'] ?></span>
+                </div>
+                <input type="hidden" name="action" value="logout">
+                <button class="exit">Выйти</button>
+            </form>
         </div>
     </div>
 </section>

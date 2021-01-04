@@ -1,6 +1,6 @@
 .aboutMe {
   display: flex;
-  background: url('@/img/baner.jpg');
+  background: url('../img/baner.jpg');
   min-height: 500px;
   color: $color-light;
   &__filter {
