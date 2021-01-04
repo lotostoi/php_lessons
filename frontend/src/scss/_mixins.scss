@@ -1,0 +1,66 @@
+@mixin mq($width, $type: min) {
+    @if $type==max {
+      $width: $width - 1px;
+    }
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
+  }
+  
+  // pleceholder
+  @mixin placeholder {
+    &::-webkit-input-placeholder {
+      @content;
+    }
+    &:-moz-placeholder {
+      @content;
+    }
+    &::-moz-placeholder {
+      @content;
+    }
+    &:-ms-input-placeholder {
+      @content;
+    }
+  }
+  
+  // animations
+  
+  $time: 0.3s;
+  
+  @keyframes page-enter {
+    from {
+      opacity: 0;
+      transform: translateY(-100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes page-leave {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+  }
+  
+  .page-leave {
+    animation: page-leave $time;
+  }
+  .page-enter {
+    animation: page-enter $time;
+  }
+  
+  //shadows
+  
+  @mixin grayShadow {
+    & {
+      -webkit-box-shadow: 0px 0px 5px 0px rgb(80, 80, 80);
+      -moz-box-shadow: 0px 0px 5px 0px rgb(80, 80, 80);
+      box-shadow: 0px 0px 5px 0px rgb(80, 80, 80);
+    }
+  }

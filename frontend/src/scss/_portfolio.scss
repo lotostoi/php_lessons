@@ -1,0 +1,175 @@
+.portfolio {
+  display: flex;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.13);
+  color: $color-dark;
+  display: flex;
+  color: $color-light;
+  &-header__fone {
+    @include bc-fone;
+  }
+  &-header__cont {
+    width: 100%;
+    height: 100%;
+    max-width: $max-width;
+    display: flex;
+    margin: 0 auto;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    padding: 120px 5px 30px;
+    flex-direction: column;
+  }
+  &-header__h1 {
+    font-size: 2.5rem;
+  }
+
+  &-header__description {
+    margin: 20px 0 10px;
+    font-size: 1.3rem;
+    font-weight: 300;
+  }
+
+  &-header__body {
+    background-color: rgba(246, 216, 187, 0.096);
+    width: 100%;
+    height: 100%;
+    max-width: $max-width;
+    display: flex;
+    margin: 0 auto;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    padding: 20px 5px;
+    flex-direction: column;
+
+    & > .filters {
+      display: flex;
+      width: 100%;
+      flex-wrap: wrap;
+      & > .filter {
+        display: flex;
+        align-items: center;
+        border-right: 2px solid $color-dark;
+        padding: 0 10px;
+        margin: 10px;
+        box-sizing: border-box;
+        & > span {
+          display: flex;
+          color: $color-dark;
+          font-size: 1.3rem;
+        }
+        & > input {
+          display: flex;
+          margin-left: 10px;
+        }
+      }
+      & > button {
+        outline: none;
+        padding: 10px;
+        background-image: url('../img/fonforlittelelem.jpg');
+        background-size: contain;
+        background: rgb(0, 0, 0);
+        color: $color-light;
+        border: none;
+
+        @include grayShadow;
+        border-radius: 20px;
+        font-size: 1rem;
+        @include bc-fone;
+        margin: 10px;
+        box-sizing: border-box;
+    
+        &:hover  {
+          @include bc-fone-rev;
+        }
+        &:active {
+          transform: scale(0.99);
+        }
+      }
+    }
+  }
+  &-catalog {
+    background-color: rgba(226, 226, 226, 0.096);
+    width: 100%;
+    height: 100%;
+    max-width: $max-width;
+    display: flex;
+    margin: 0 auto;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    padding: 20px 5px 30px;
+    flex-direction: column;
+    position: relative;
+    &__outside {
+      position: absolute;
+      top: -30px;
+      right: 20px;
+      color: $color-dark;
+    }
+
+    &__cont {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      justify-content: space-around;
+      & > .product {
+        margin: 5px;
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        @include shadow;
+        border-radius: 5px;
+        & > .img {
+          display: flex;
+          width: 100%;
+          justify-content: center;
+
+          & > img {
+            height: 250px;
+            border: 1px solid rgba(128, 128, 128, 0.329);
+          }
+        }
+        & > .title {
+          margin-top: 20px;
+          margin-bottom: 10px;
+          font-size: 1.2rem;
+          font-weight: 600;
+          color: $color-dark;
+        }
+        & > .tags {
+          margin-top: auto;
+          font-size: 1.2rem;
+          display: flex;
+          flex-wrap: wrap;
+          & > .title {
+            font-weight: 500;
+            font-style: italic;
+            margin-right: 5px;
+            color: $color-dark;
+          }
+          & > span {
+            font-weight: 300;
+            font-style: italic;
+            margin-right: 5px;
+            color: $color-dark;
+          }
+        }
+        & > .link {
+          margin: 10px 0;
+          display: flex;
+          text-decoration: none;
+          font-weight: 400;
+          color: $color-dark;
+          font-style: italic;
+          font-size: 1.1rem;
+          margin-right: 5px;
+          &:hover {
+            color: $color-dark-hover;
+          }
+          &:active {
+            color: $color-dark-active;
+          }
+        }
+      }
+    }
+  }
+}

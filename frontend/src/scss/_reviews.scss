@@ -1,0 +1,279 @@
+.hiden {
+  display: none !important;
+}
+
+.reviews {
+  display: flex;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.13);
+  color: $color-dark;
+  display: flex;
+  color: $color-light;
+
+  &-header__fone {
+    @include bc-fone;
+  }
+  &-header__cont {
+    width: 100%;
+    height: 100%;
+    max-width: $max-width;
+    display: flex;
+    margin: 0 auto;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    padding: 120px 5px 30px;
+    flex-direction: column;
+  }
+
+  &-header__h1 {
+    font-size: 2.5rem;
+  }
+
+  &-header__description {
+    margin: 20px 0 10px;
+    font-size: 1.3rem;
+    font-weight: 300;
+  }
+  &-body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    max-width: $max-width;
+    margin: 0 auto;
+  }
+  &-body__enter {
+    width: 100%;
+    color: gray;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    border-bottom: 1px solid rgb(207, 207, 207);
+    padding: 20px;
+    & > p.title {
+      display: flex;
+      margin: 10px 0 0;
+      color: $color-dark;
+      font-size: 1.2rem;
+    }
+    & > .social-network {
+      width: 100%;
+      max-width: 700px;
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+      & > .list {
+        display: flex;
+        & > a {
+          margin-right: 30px;
+          display: flex;
+          text-decoration: none;
+          & > i {
+            font-size: 3rem;
+            color: rgb(0, 132, 255);
+          }
+          & > i:hover {
+            color: $color-dark-hover;
+          }
+          & > i:active {
+            color: $color-dark-active;
+          }
+        }
+      }
+    }
+  }
+
+  &-body__form {
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    padding: 20px;
+    & > label {
+      display: flex;
+      flex-direction: column;
+      & > span {
+        display: flex;
+        font-size: 1.5rem;
+        margin: 10px 0;
+        color: $color-dark;
+      }
+      & > input {
+        width: 30%;
+        margin: 0;
+        display: flex;
+        outline: none;
+        font-size: 1.2rem;
+        color: $color-dark;
+        padding: 5px;
+        @include placeholder {
+          font-size: 1.2rem;
+          color: $color-dark;
+        }
+      }
+      & > textarea {
+        padding: 10px;
+        width: 70%;
+        min-height: 100px;
+        margin: 20px 0;
+        display: flex;
+        outline: none;
+        border-radius: 2px;
+        font-size: 1.2rem;
+        color: $color-dark;
+        border-color: rgba(128, 128, 128, 0.219);
+        background-color: rgba(128, 70, 3, 0.075);
+        @include placeholder {
+          font-size: 1.2rem;
+          color: $color-dark;
+        }
+      }
+    }
+    & > p.message {
+      margin-bottom: -10px;
+      padding: 10px 0;
+      font-size: 1rem;
+      font-style: italic;
+      color: red;
+    }
+    & > button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      width: 200px;
+      outline: none;
+      padding: 10px;
+      background-image: url('../img/fonforlittelelem.jpg');
+      background-size: contain;
+      background: rgb(0, 0, 0);
+      color: $color-light;
+      border: none;
+
+      @include grayShadow;
+      border-radius: 3px;
+      font-size: 1rem;
+      @include bc-fone;
+      margin: 10px 0;
+      box-sizing: border-box;
+
+      &:hover {
+        @include bc-fone-rev;
+      }
+      &:active {
+        transform: scale(0.99);
+      }
+    }
+  }
+  &-body__wrapper {
+    border-top: 1px solid white;
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    padding: 20px;
+  }
+  &-body__review {
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    margin: 10px 0;
+    border-bottom: 1px solid rgb(240, 238, 238);
+    justify-content: space-between;
+    background-color: rgba(128, 70, 3, 0.075);
+    border-top: 1px solid rgba(199, 198, 198, 0.13);
+    border-left: 1px solid rgba(199, 198, 198, 0.13);
+    @include shadow-bot;
+    border-radius: 0 0 5px 0;
+    & > .user {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      & > .nick {
+        display: flex;
+        align-items: center;
+        & > img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          border: 1px solid rgb(197, 197, 197);
+        }
+        & > a {
+          margin-left: 20px;
+          font-size: 1.2rem;
+          color: $color-dark;
+          text-decoration: none;
+        }
+        & > a:hover {
+          color: $color-dark-hover;
+        }
+        & > a:active {
+          color: $color-dark-active;
+        }
+      }
+      & > p {
+        background-color: transparent;
+        font-size: 1.2rem;
+        color: $color-dark;
+        & > span {
+          color: $color-dark;
+        }
+      }
+      & > .review {
+        background-color: transparent;
+        border-radius: 3px;
+        margin: 5px 0;
+        padding: 5px;
+        display: flex;
+        flex-direction: column;
+        font-style: italic;
+        font-weight: 300;
+        font-size: 1.2rem;
+        color: $color-dark;
+      }
+      & > .edit_review {
+        padding: 10px;
+        min-height: 80px;
+        margin: 0;
+        display: flex;
+        outline: none;
+        border-radius: 5px;
+        font-size: 1.2rem;
+        background-color: white;
+        border-color: rgb(211, 211, 211);
+        @include placeholder {
+          font-size: 1.2rem;
+          color: $color-dark;
+        }
+      }
+    }
+    & > .edit {
+      display: flex;
+      flex-direction: column;
+      & > button {
+        width: 50px;
+        outline: none;
+        padding: 10px;
+        background-image: url('../img/fonforlittelelem.jpg');
+        background-size: contain;
+        background: rgb(0, 0, 0);
+        color: $color-light;
+        border: none;
+        @include grayShadow;
+        border-radius: 20px;
+        font-size: 1rem;
+        @include bc-fone;
+        margin: 10px;
+        box-sizing: border-box;
+        & > i {
+          pointer-events: none;
+        }
+
+        &:hover {
+          @include bc-fone-rev;
+        }
+        &:active {
+          transform: scale(0.99);
+        }
+      }
+    }
+  }
+}
