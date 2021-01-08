@@ -5,8 +5,8 @@
         </div>
     </div>
     <div class="common-body">
-        <div class="auth-logout">
-            <form class="person-area" method="POST">
+        <div class="person-area">
+            <form class="site" method="POST">
                 <div class="img">
                     <img src="<?= $full_user['img_big'] ?>" alt="user-image" />
                 </div>

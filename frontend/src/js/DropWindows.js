@@ -1,4 +1,4 @@
-import { $, _await } from './functions'
+import {$, _await} from './functions'
 class DropWindow {
   constructor(options) {
     this.$el = typeof options.contSel === 'string' ? $.el(options.contSel) : options.contSel
@@ -11,20 +11,25 @@ class DropWindow {
   }
 
   async #getHeight() {
-    let { $content, $indicator } = this
-    $content.classList.add('measuring')
-    await _await(100)
-    this.height = $content.offsetHeight
-    await _await(100)
-    $content.classList.remove('measuring')
-    if ($content.classList.contains('active')) {
+    let {$content, $indicator} = this
+    if (!$content.classList.contains('active')) {
+      $content.classList.add('measuring')
+      await _await(100)
+      this.height = $content.offsetHeight
+      await _await(100)
+      $content.classList.remove('measuring')
+      await _await(100)
+    } else {
+      await _await(300)
+      this.height = $content.offsetHeight
       $content.style.height = `${this.height}px`
       $indicator && $indicator.classList.add('active')
     }
+    $content.style.transition = 'margin 300ms,padding 300ms, height 300ms, opacity 300ms'
   }
 
   async #switchWindow(e) {
-    let { $content, $indicator } = this
+    let {$content, $indicator} = this
     if (!$content.classList.contains('active')) {
       $content.classList.add('active')
       $indicator && $indicator.classList.add('active')

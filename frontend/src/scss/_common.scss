@@ -17,14 +17,17 @@
     flex-direction: column;
   }
   &-header__h1 {
-    font-size: 2.5rem;
-    color: $color-light;
+    font-size: 2rem;
+    color: $color-bright;
   }
 
   &-header__description {
+   // @include textIndent;
+    @include firstLetter;
     margin: 20px 0 10px;
     font-size: 1.3rem;
     font-weight: 300;
+    color: $color-light;
   }
 
   &-body {

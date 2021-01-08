@@ -1,10 +1,11 @@
 <?php
 session_start();
-$_SESSION['save_sn'] = isset($_SESSION['save_sn']) ? $_SESSION['save_sn'] : $_GET['save_sn'];
+
+$_SESSION['save_sn'] = $_SESSION['save_sn'] ? $_SESSION['save_sn'] : $_POST['save_sn'];
+$_SESSION['redirect'] = $_POST['redirect'] ? $_POST['redirect'] : ($_SESSION['redirect'] ? $_SESSION['redirect'] : 'reviews');
 $link_for_redirect = VK_REDIRECT;
 $link_for_code = "https://oauth.vk.com/authorize?client_id=" . VK_ID . "&display=page&redirect_uri=$link_for_redirect&scope=friends&response_type=code&v=5.126";
-if ($_GET['start'] == 1) {
-
+if ($_POST['start'] == 1) {
     header("Location: {$link_for_code}");
     die();
 }

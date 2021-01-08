@@ -5,10 +5,7 @@
 * {
   margin: 0;
   padding: 0;
- // color: $color-light;
 }
-
-
 body {
   height: calc(100vh + 20px);
   font-size: 14px;
@@ -21,7 +18,8 @@ body {
 }
 
 @import 'work';
-@import "person-area";
+@import 'filters';
+@import 'person-area';
 @import 'admin-catalog';
 @import 'common';
 @import 'header';

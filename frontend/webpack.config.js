@@ -16,9 +16,7 @@ const isDevelopment = !isProduction
 const conf = {
   context: path.resolve(__dirname, 'src'),
   mode: isProduction ? 'production' : 'development',
-  entry: {
-    index: './js/main.js',
-  },
+  entry: ['@babel/polyfill','./js/main.js'],
   output: {
     publicPath: !isProduction ? '/' : '/src/',
     filename: 'js/[name].bundle.js',
@@ -140,7 +138,7 @@ const conf = {
     overlay: true,
     proxy: {
       '**': {
-        target: 'http://php1/',
+        target: 'http://php.ru/',
         secure: false,
         changeOrigin: true,
       },

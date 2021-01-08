@@ -1,28 +1,29 @@
-<section class="reviews wrapper">
-    <div class="reviews-header__fone">
-        <div class="reviews-header__cont">
-            <h1 class="reviews-header__h1">Резюме_</h1>
+<section class="common wrapper">
+    <div class="common-header__fone">
+        <div class="common-header__cont">
+            <h1 class="common-header__h1">Резюме_</h1>
+  <!--           <div class="common-header__description">
+               В данном разделе вы сможете найти информацию обо мне...
+            </div> -->
         </div>
     </div>
     <div class="common-body">
-        <p class="resume__prediction">
-            Меня зовут Плотников Алексндр Александрович, мне 37 лет. Проживаю в городе Артеме Приморского края (пригород Владивостока). В 2005 году с отличием, закончил ДВПИ имени В.В.Куйбышева.
-            Являюсь магистром техники и технологии по направлению «Приборостроение». В 2013 году защитил кандидатскую диссертацию по специальности - «Акустика».
-        </p>
         <section class="resume__allInformation">
             <div class="title">
-                <h4>Общая информация_ <i class="fa fa-caret-right" aria-hidden="true"></i></h4>
+                <h4>Общая информация_ </h4>
+                <i class="fa fa-caret-right" aria-hidden="true"></i>
             </div>
-            <p class="content active">
+            <p class="content ">
                 Меня зовут Плотников Алексндр Александрович, мне 37 лет. Проживаю в городе Артеме Приморского края (пригород Владивостока). В 2005 году с отличием, закончил ДВПИ имени В.В.Куйбышева.
                 Являюсь магистром техники и технологии по направлению «Приборостроение». В 2013 году защитил кандидатскую диссертацию по специальности - «Акустика».
             </p>
         </section>
         <section class="resume__allInformation">
             <div class="title">
-                <h4>Web разработка_ <i class="fa fa-caret-right" aria-hidden="true"></i></h4>
+                <h4>Web разработка_ </h4>
+                <i class="fa fa-caret-right" aria-hidden="true"></i>
             </div>
-            <div class="content">
+            <div class="content active">
                 <p>
                     В 2018 году поступил на специальность веб-разработка в школе GeekBrains . Пройдя ступени HTML5 и CSS3 , JavaScript уровень 1 , JavaScript уровень 2 , PHP уровень 1 , PHP уровень 2 ,
                     понял, что это мое и перевелся на факультет , по той же специальности, но с более расширенной программой (React, nodejs и т.д.). Помимо этого, искренни полюбил js и проходил следующие
@@ -37,9 +38,10 @@
         </section>
         <section class="resume__allInformation">
             <div class="title">
-                <h4>Мои навыки_ <i class="fa fa-caret-right" aria-hidden="true"></i></h4>
+                <h4>Мои навыки_ </h4>
+                <i class="fa fa-caret-right" aria-hidden="true"></i>
             </div>
-            <p class="content">
+            <p class="content active">
                 В первую очередь мои интересы связаны с frontend-ом и такими технологиями как: html, css3, scss, js, Vue.js и ajax. Очень нравится заниматься вёрсткой и писать на js и Vue.js. Что
                 касается backend-да то, тут могу выделить node.js, momgodb, socket.io. По мимо этого мне так же интересны такие технологии как php, sql, myql, twig. Имею опыт работы с всеми
                 перечисленными технологиями (примеры работ можно посмотреть в портфолио), однако на данный момент js и node.js мне ближе чем php. Поимом этого имею опты работы с webpack и системой
@@ -49,7 +51,8 @@
         </section>
         <section class="resume__allInformation">
             <div class="title">
-                <h4>Мои интересы_ <i class="fa fa-caret-right" aria-hidden="true"></i></h4>
+                <h4>Мои интересы_ </h4>
+                <i class="fa fa-caret-right" aria-hidden="true"></i>
             </div>
             <p class="content">
                 На данный момент ищу удаленную работу, с гарантированной занятостью 3-4 часа в день. Основная цель развитие и получение опыта в разработке реальных проектов. Так же если у кого-то есть
