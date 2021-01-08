@@ -8,6 +8,21 @@ define("CORE", PUBLIC_FOLDER . "/../core/");
 define("API", PUBLIC_FOLDER . "/../api/");
 define("BIG", "src/bigimages/");
 define("SMALL", "src/smallimages/");
+
+/* define("DOMEN", "https://lotos.spb.ru/");
+// const for data base
+
+define("HOST", "localhost");
+define("USER", "u1048424_root");
+define("PASS", "XrTA2B2Igm3AzBPR");
+define("DB_NAME", "u1048424_my_portfolio");
+define("PICTURES", "pictures");
+define("REVIEWS", "reviews");
+define("WORKS", "works");
+define("WORKS_TO_TAGS", "works_to_tags");
+define("TAGS", "tags");
+ */
+
 define("DOMEN", "https://php.ru/");
 // const for data base
 
