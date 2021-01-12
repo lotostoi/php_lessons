@@ -11,7 +11,7 @@
     align-items: flex-start;
     justify-content: space-between;
     box-sizing: border-box;
-    padding: 80px 5px 50px;
+    padding: 80px var(--padding) 50px;
   }
   &__title {
     font-size: 2rem;
@@ -48,6 +48,15 @@
     }
     &:active {
       transform: scale(0.99);
+    }
+  }
+}
+
+
+@include mq(900px, max) {
+  .hello {
+    &__cont {  
+      padding: 40px var(--padding) 50px;
     }
   }
 }

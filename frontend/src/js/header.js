@@ -11,3 +11,21 @@ function switchViewHeader() {
   }
 }
 $.el('.header__cont').setAttribute('style', 'transition: padding .7s')
+
+
+// switch on/off mobile menu
+
+const onOf = $.el('.on-of')
+const menu = $.el('.header__nav > .menu')
+onOf.addEventListener('click', (e) => {
+  e.preventDefault()
+  menu.classList.toggle('active')
+})
+
+menu.addEventListener('click', (e) => {
+  e.preventDefault()
+  console.log(1);
+  if (e.target.tagName === 'A') {
+    menu.classList.remove('active')
+  }
+})

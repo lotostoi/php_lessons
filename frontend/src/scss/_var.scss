@@ -1,3 +1,5 @@
+$hover-off: 1024px;
+
 $max-width: 1400px;
 $ff: Roboto Mono, monospace;
 $color-light: white;
@@ -10,3 +12,20 @@ $color-light-grey: rgba(199, 198, 198, 0.685);
 $color-bright: rgba(249, 128, 7, 0.7987570028011204);
 $color-bright-strong: rgb(245, 100, 4);
 
+
+:root {
+    --padding:20px;  
+}
+
+@include mq(1450px, max) {
+    :root {
+        --padding: 50px;
+     
+    }
+  }
+@include mq(700px, max) {
+    :root {
+        --padding: 20px;
+     
+    }
+  }

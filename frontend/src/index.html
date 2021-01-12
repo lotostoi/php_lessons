@@ -11,7 +11,10 @@
   <header class="wrapper header modif">
     <div class="header__cont modif">
       <nav class="header__nav">
-        <div>
+        <div class="on-of">
+          <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+        <div class = "menu">
           <a href="#" class="modif">Главная</a>
           <a href="#resume" class="modif">Резюме</a>
           <a href="#" class="modif">Портфолио</a>
@@ -30,12 +33,12 @@
     </div>
   </header>
   <main>
-    <section class="aboutMe wrapper">
+   <section class="aboutMe wrapper">
       <div class="aboutMe__filter">
         <div class="aboutMe__cont">
           <div class="aboutMe__img">
-            <div>
-              <img src="./img/i.png" alt="" />
+            <div class="img">
+              <img src="./img/i.png" width = "300" heigth="372" alt="" />
             </div>
           </div>
           <section class="aboutMe__desc">
@@ -71,7 +74,7 @@
         <button class="hello__button"><i class="fa fa-download" aria-hidden="true"> </i><span>Скачать
             резюме</span></button>
       </div>
-    </section>
+    </section> 
     <!--     <section class="common wrapper">
       <div class="common-header__fone">
         <div class="common-header__cont">
@@ -154,8 +157,8 @@
         </section>
       </div>
     -->
-  </main>
-  <section class="portfolio wrapper">
+  <!--</main>
+   <section class="portfolio wrapper">
     <div class="portfolio-header__fone">
       <div class="portfolio-header__cont">
         <h1 class="portfolio-header__h1">Мои проекты_</h1>
@@ -255,8 +258,8 @@
         </div>
       </div>
     </div>
-  </section>
-  <section class="common wrapper">
+  </section> -->
+ <!--  <section class="common wrapper">
     <div class="common-header__fone">
       <div class="common-header__cont">
         <h1 class="common-header__h1">Редактировать фильтры_</h1>
@@ -280,8 +283,8 @@
           </form>
         </div>
       </div>
-    </div>
-    <section class="reviews wrapper">
+    </div> -->
+    <!-- <section class="reviews wrapper">
       <div class="reviews-header__fone">
         <div class="reviews-header__cont">
           <h1 class="reviews-header__h1">Отзывы_</h1>
@@ -408,47 +411,54 @@
           <auth-content />
         </div>
       </div>
-    </section>
-    <footer class="footer wrapper" id="contacts">
+    </section> -->
+     <footer class="footer wrapper" id="contacts">
       <div class="footer__filter">
         <div class="footer__cont">
           <h3 class="footer__title">Мои контакты_</h3>
           <div class="footer__body">
             <div class="footer__contacts">
-              <div class="field">
-                <span class="field__title">Телефон:</span>
-                <span class="field__content">89242521756</span>
+              <div>
+                <div class="field">
+                  <span class="field__title">Телефон:</span>
+                  <span class="field__content">89242521756</span>
+                </div>
+                <div class="field">
+                  <span class="field__title">Телеграм:</span>
+                  <span class="field__content">89242521756</span>
+                </div>
+                <div class="field">
+                  <span class="field__title">What's app:</span>
+                  <span class="field__content">89242521756</span>
+                </div>
+                <div class="field">
+                  <span class="field__title">Discord:</span>
+                  <span class="field__content">89242521756</span>
+                </div>
               </div>
-              <div class="field">
-                <span class="field__title">Телеграм:</span>
-                <span class="field__content">89242521756</span>
+                <div class="social">
+                  <a href="#">Facebook</a>
+                  <a href="#">Instagram</a>
+                  <a href="#">GitHub</a>
+               
               </div>
-              <div class="field">
-                <span class="field__title">What's app:</span>
-                <span class="field__content">89242521756</span>
-              </div>
-              <div class="field">
-                <span class="field__title">Discord:</span>
-                <span class="field__content">89242521756</span>
-              </div>
-              <div class="social">
-                <a href="#">Facebook</a>
-                <a href="#">Instagram</a>
-                <a href="#">GitHub</a>
-              </div>
+              
             </div>
             <div class="footer__form">
-              <h4>Или просто напишите мне_</h4>
+              <h4>Форма обратной связи_</h4>
               <input type="text" name="name" placeholder="Ваше имя">
               <input type="email" name="email" placeholder="Вашь e-mail">
               <textarea name="message" cols="30" rows="10" placeholder="Текст сообщения"></textarea>
               <button> Отправить </button>
             </div>
+            
           </div>
-          <p>© 2016 Александр Плотников. Все права защищены</p>
+          <p class="rights">© 2016 Александр Плотников. Все права защищены</p>
         </div>
+       
       </div>
-    </footer>
+     
+    </footer> 
 </body>
 
 </html>

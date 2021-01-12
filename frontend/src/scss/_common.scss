@@ -13,7 +13,7 @@
     margin: 0 auto;
     justify-content: flex-start;
     box-sizing: border-box;
-    padding: 120px 5px 30px;
+    padding: 120px var(--padding) 30px;
     flex-direction: column;
   }
   &-header__h1 {
@@ -39,7 +39,7 @@
     margin: 0 auto;
     justify-content: flex-start;
     box-sizing: border-box;
-    padding: 20px 5px;
+    padding: 20px var(--padding);
     flex-direction: column;
     color: $color-dark;
   }

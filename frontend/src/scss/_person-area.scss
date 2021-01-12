@@ -7,6 +7,7 @@
   justify-content: center;
   min-height: 50vh;
   padding: 50px;
+  box-sizing: border-box;
   & > p.title {
     color: $color-dark;
     font-size: 1.5rem;
