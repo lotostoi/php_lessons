@@ -23,10 +23,10 @@ define("WORKS_TO_TAGS", "works_to_tags");
 define("TAGS", "tags");
  */
 
-define("DOMEN", "https://php.ru/");
+define("DOMEN", "https://php/");
 // const for data base
 
-define("HOST", "localhost:3306");
+define("HOST", "localhost:3307");
 define("USER", "lotos");
 define("PASS", "XrTA2B2Igm3AzBPR");
 define("DB_NAME", "my_portfolio");
@@ -37,8 +37,8 @@ define("WORKS_TO_TAGS", "works_to_tags");
 define("TAGS", "tags");
 
 // VK 
-define("VK_ID", "7718281");
-define("VK_SICRET_KEY", "Co11q8Y9pOCRkQz6HwHr");
+define("VK_ID", "7715811");
+define("VK_SICRET_KEY", "G5vf0RSuP1I9aRx41eSM");
 define("VK_REDIRECT", DOMEN . "api-auth-vk");
 
 // FB 

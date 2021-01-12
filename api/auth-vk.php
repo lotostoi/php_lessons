@@ -2,7 +2,8 @@
 session_start();
 
 $_SESSION['save_sn'] = $_SESSION['save_sn'] ? $_SESSION['save_sn'] : $_POST['save_sn'];
-$_SESSION['redirect'] = $_POST['redirect'] ? $_POST['redirect'] : ($_SESSION['redirect'] ? $_SESSION['redirect'] : 'reviews');
+$_SESSION['redirect'] = $_POST['redirect'] ? $_POST['redirect'] : $_SESSION['redirect'];
+
 $link_for_redirect = VK_REDIRECT;
 $link_for_code = "https://oauth.vk.com/authorize?client_id=" . VK_ID . "&display=page&redirect_uri=$link_for_redirect&scope=friends&response_type=code&v=5.126";
 if ($_POST['start'] == 1) {

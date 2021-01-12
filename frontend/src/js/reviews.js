@@ -4,7 +4,7 @@ import http from '@/js/server'
   const wrapperForReviews = document.querySelector('.reviews-body__wrapper') || null
   if (reviews) {
     reviews.addEventListener('click', async (e) => {
-      if (e.target.id) {
+      if (e.target.id === 'add-review') {
         e.preventDefault()
         let body = new FormData(document.getElementById('add-reviews'))
         body.append('operation', 'add')
@@ -72,7 +72,7 @@ import http from '@/js/server'
       container.insertAdjacentHTML('afterbegin', review)
     }
 
-    function renderReview({img_small, link_network, user, review, id}) {
+    function renderReview({ img_small, link_network, user, review, id }) {
       return `
     <form class="reviews-body__review" data-form="${id}">
             <div class="user">

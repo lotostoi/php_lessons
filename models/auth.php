@@ -116,19 +116,11 @@ function sn_auth()
         header("Location: /$redirect");
         die();
     } else {
-        $addUser = execute("INSERT INTO users VALUES('0','{$login}','{$first_name}','{$last_name}','{$img_small}','{$img_big}','{$sosial_network}',{$id_in_sosial_network},'{$link_to_sosial_network}','{$email}','{$password}',{$admin})")[0];
-        if ($addUser) {
-            $user = get_assoc_result("SELECT * FROM users WHERE `sosial_network`=`{$sosial_network}` AND `id_in_sosial_network`=$id_in_sosial_network")[0];
-            if ($user) {
-                auth($user, $save);
-                $_SESSION['sn_user'] = null;
-                $_SESSION['save_sn'] = null;
-                header("Location: /$redirect");
-                die();
-            }
-            header("Location: /$redirect");
-            die();
-        }
+        execute("INSERT INTO users VALUES('0','{$login}','{$first_name}','{$last_name}','{$img_small}','{$img_big}','{$sosial_network}',{$id_in_sosial_network},'{$link_to_sosial_network}','{$email}','{$password}',{$admin})")[0];
+        $user = get_assoc_result("SELECT * FROM users WHERE `sosial_network`=`{$sosial_network}` AND `id_in_sosial_network`=$id_in_sosial_network")[0];
+        auth($user, $save);
+        $_SESSION['sn_user'] = null;
+        $_SESSION['save_sn'] = null;
         header("Location: /$redirect");
         die();
     }
@@ -138,7 +130,6 @@ function auth($user, $save)
 {
     $_SESSION['user'] = $user;
     $id = $user['id'];
-
     if ($save == 1) {
         $hash = uniqid(rand(), true);
         $setHashAndFp = execute("INSERT INTO hashes VALUES (null,'$id', '$hash')");

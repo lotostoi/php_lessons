@@ -1,7 +1,7 @@
 <?php
 session_start();
 $_SESSION['save_sn'] = $_SESSION['save_sn'] ? $_SESSION['save_sn'] : $_POST['save_sn'];
-$_SESSION['redirect'] = $_POST['redirect'] ? $_POST['redirect'] : ($_SESSION['redirect'] ? $_SESSION['redirect'] : 'reviews');
+$_SESSION['redirect'] = $_POST['redirect'] ? $_POST['redirect'] : $_SESSION['redirect'];
 $link_for_redirect = VK_REDIRECT;
 $link_for_code = "https://www.facebook.com/v9.0/dialog/oauth?client_id=" . FB_ID . "&redirect_uri=" . FB_REDIRECT . "&response_type=code&scope=email&state=tdtdtsdasydgjdbasdbasyub";
 if ($_POST['start'] == 1) {

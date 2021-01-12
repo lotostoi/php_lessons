@@ -42,7 +42,12 @@
                 </button>
               </form>
             </div>
+            <label class="save">
+              <p>Запомнить_:</p>
+              <input type="checkbox" name="save_sn" checked id="checked_network" />
+            </label>
           </div>
+
         </div>
       <?php endif; ?>
 
