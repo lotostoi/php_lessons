@@ -8,7 +8,7 @@
   color: $color-dark;
   display: flex;
   color: $color-light;
-
+  background-color: $color-fone-light;
   &-header__fone {
     @include bc-fone;
   }

@@ -15,18 +15,17 @@
   &__h1 {
     display: flex;
     margin: 10px 0;
-/*     font-family: $f-r; */
     box-sizing: border-box;
   }
   &__from {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
+    background-color: $color-fone-light;
 
     & .form__message {
       display: flex;
       margin: 10px 0;
-  /*     font-family: $f-r; */
       font-size: 1.2rem;
       font-weight: 300;
       color: red;
@@ -47,7 +46,6 @@
         display: flex;
         align-items: center;
         & > label {
-      /*     font-family: $f-r; */
           font-size: 1.5rem;
           font-weight: 500;
         }

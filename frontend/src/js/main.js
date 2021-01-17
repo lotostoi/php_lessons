@@ -5,10 +5,14 @@ import '@/index.html'
 import {$} from './functions'
 import DropWindow from '@/js/DropWindows'
 import SmoothScroll from 'smooth-scroll'
+import ImagePreloader from '@/js/ImagePreloader'
 import '@/js/reviews'
 import '@/js/header'
 import '@/js/portfolio'
 import '@/js/filters'
+
+
+new ImagePreloader('../img/loader.svg')
 
 new SmoothScroll(['a[href*="#"]'], {
   speed: 600,

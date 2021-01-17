@@ -23,8 +23,6 @@ onOf.addEventListener('click', (e) => {
 })
 
 menu.addEventListener('click', (e) => {
-  e.preventDefault()
-  console.log(1);
   if (e.target.tagName === 'A') {
     menu.classList.remove('active')
   }

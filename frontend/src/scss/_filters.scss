@@ -3,6 +3,7 @@
   flex-direction: column;
   position: relative;
   padding: 20px 10px;
+  background-color: $color-fone-light;
 
   & > .filters-message {
     @include message($bk: black, $color: rgb(255, 136, 0));

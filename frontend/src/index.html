@@ -14,7 +14,7 @@
         <div class="on-of">
           <i class="fa fa-bars" aria-hidden="true"></i>
         </div>
-        <div class = "menu">
+        <div class="menu">
           <a href="#" class="modif">Главная</a>
           <a href="#resume" class="modif">Резюме</a>
           <a href="#" class="modif">Портфолио</a>
@@ -33,12 +33,12 @@
     </div>
   </header>
   <main>
-   <section class="aboutMe wrapper">
+    <section class="aboutMe wrapper">
       <div class="aboutMe__filter">
         <div class="aboutMe__cont">
           <div class="aboutMe__img">
             <div class="img">
-              <img src="./img/i.png" width = "300" heigth="372" alt="" />
+              <img src="./img/i.png" width="300" heigth="372" alt="" />
             </div>
           </div>
           <section class="aboutMe__desc">
@@ -74,7 +74,7 @@
         <button class="hello__button"><i class="fa fa-download" aria-hidden="true"> </i><span>Скачать
             резюме</span></button>
       </div>
-    </section> 
+    </section>
     <!--     <section class="common wrapper">
       <div class="common-header__fone">
         <div class="common-header__cont">
@@ -157,8 +157,8 @@
         </section>
       </div>
     -->
-  <!--</main>
-   <section class="portfolio wrapper">
+  </main>
+  <section class="portfolio wrapper">
     <div class="portfolio-header__fone">
       <div class="portfolio-header__cont">
         <h1 class="portfolio-header__h1">Мои проекты_</h1>
@@ -213,8 +213,8 @@
       <a href="/portfolio/add" class="portfolio-catalog__outside-filters">Edit filters</a>
       <div class="portfolio-catalog__cont">
         <div class="product">
-          <div class="img">
-            <img src="./img/Скриншот 26-12-2020 135014.jpg" alt="">
+          <div class="img" data-src="https://alexander-pl.ru/src/bigimages/11.jpg">
+            <img src="https://alexander-pl.ru/src/bigimages/11.jpg" alt="">
           </div>
           <p class="title"> </p>
           <div class="tags">
@@ -224,8 +224,8 @@
           <a href="" class="link">Подробнее...</a>
         </div>
         <div class="product">
-          <div class="img">
-            <img src="./img/Скриншот 26-12-2020 135014.jpg" alt="">
+          <div class="img" data-src="https://alexander-pl.ru/src/bigimages/11.jpg">
+            <img src="./img/Скриншот 26-12-2020 135014.jpg" alt=""> 
           </div>
           <p class="title"> </p>
           <div class="tags">
@@ -258,8 +258,8 @@
         </div>
       </div>
     </div>
-  </section> -->
- <!--  <section class="common wrapper">
+  </section>
+  <!--  <section class="common wrapper">
     <div class="common-header__fone">
       <div class="common-header__cont">
         <h1 class="common-header__h1">Редактировать фильтры_</h1>
@@ -284,7 +284,7 @@
         </div>
       </div>
     </div> -->
-    <!-- <section class="reviews wrapper">
+ <section class="reviews wrapper">
       <div class="reviews-header__fone">
         <div class="reviews-header__cont">
           <h1 class="reviews-header__h1">Отзывы_</h1>
@@ -309,8 +309,8 @@
           <p class="result_loader"> Работа была успешно отредактированна!</p>
           <?php endif; ?>
           <a href="./portfolio/edit?id=<?= $work['id'] ?>&order=1" class="link__outside">Edit this work</a>
-          <div class="work__img">
-            <img src="./img/big.png" alt="name" class="big-picture__img">
+          <div data-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQx2j3VT6KA_-Uiw-xq_2nlXBiW0hCYlfLvqA&usqp=CAU" class="work__img">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQx2j3VT6KA_-Uiw-xq_2nlXBiW0hCYlfLvqA&usqp=CAU" alt="name" class="big-picture__img">
           </div>
           <p class="work__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque, laborum ratione
             sequi doloribus, earum modi, possimus alias dignissimos nisi sit dolorum. Maiores atque sint natus
@@ -411,54 +411,49 @@
           <auth-content />
         </div>
       </div>
-    </section> -->
-     <footer class="footer wrapper" id="contacts">
-      <div class="footer__filter">
-        <div class="footer__cont">
-          <h3 class="footer__title">Мои контакты_</h3>
-          <div class="footer__body">
-            <div class="footer__contacts">
-              <div>
-                <div class="field">
-                  <span class="field__title">Телефон:</span>
-                  <span class="field__content">89242521756</span>
-                </div>
-                <div class="field">
-                  <span class="field__title">Телеграм:</span>
-                  <span class="field__content">89242521756</span>
-                </div>
-                <div class="field">
-                  <span class="field__title">What's app:</span>
-                  <span class="field__content">89242521756</span>
-                </div>
-                <div class="field">
-                  <span class="field__title">Discord:</span>
-                  <span class="field__content">89242521756</span>
-                </div>
+    </section> 
+  <footer class="footer wrapper" id="contacts">
+    <div class="footer__filter">
+      <div class="footer__cont">
+        <h3 class="footer__title">Мои контакты_</h3>
+        <div class="footer__body">
+          <div class="footer__contacts">
+            <div>
+              <div class="field">
+                <span class="field__title">Телефон:</span>
+                <span class="field__content">89242521756</span>
               </div>
-                <div class="social">
-                  <a href="#">Facebook</a>
-                  <a href="#">Instagram</a>
-                  <a href="#">GitHub</a>
-               
+              <div class="field">
+                <span class="field__title">Телеграм:</span>
+                <span class="field__content">89242521756</span>
               </div>
-              
+              <div class="field">
+                <span class="field__title">What's app:</span>
+                <span class="field__content">89242521756</span>
+              </div>
+              <div class="field">
+                <span class="field__title">Discord:</span>
+                <span class="field__content">89242521756</span>
+              </div>
             </div>
-            <div class="footer__form">
-              <h4>Форма обратной связи_</h4>
-              <input type="text" name="name" placeholder="Ваше имя">
-              <input type="email" name="email" placeholder="Вашь e-mail">
-              <textarea name="message" cols="30" rows="10" placeholder="Текст сообщения"></textarea>
-              <button> Отправить </button>
+            <div class="social">
+              <a href="#">Facebook</a>
+              <a href="#">Instagram</a>
+              <a href="#">GitHub</a>
             </div>
-            
           </div>
-          <p class="rights">© 2016 Александр Плотников. Все права защищены</p>
+          <div class="footer__form">
+            <h4>Форма обратной связи_</h4>
+            <input type="text" name="name" placeholder="Ваше имя">
+            <input type="email" name="email" placeholder="Вашь e-mail">
+            <textarea name="message" cols="30" rows="10" placeholder="Текст сообщения"></textarea>
+            <button> Отправить </button>
+          </div>
         </div>
-       
+        <p class="rights">© 2016 Александр Плотников. Все права защищены</p>
       </div>
-     
-    </footer> 
+    </div>
+  </footer>
 </body>
 
 </html>

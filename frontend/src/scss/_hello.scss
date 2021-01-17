@@ -2,6 +2,7 @@
   display: flex;
   border-bottom: 1px solid rgba(128, 128, 128, 0.13);
 
+
   &__cont {
     width: 100%;
     flex-direction: column;
@@ -12,6 +13,7 @@
     justify-content: space-between;
     box-sizing: border-box;
     padding: 80px var(--padding) 50px;
+    background-color: $color-fone-light;
   }
   &__title {
     font-size: 2rem;
