@@ -1,0 +1,64 @@
+.admin-filters {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 20px 10px;
+  background-color: $color-fone-light;
+
+  & > .filters-message {
+    @include message($bk: black, $color: rgb(255, 136, 0));
+  }
+  & > .filters-error {
+    @include message($bk: rgb(219, 87, 87), $color: rgb(0, 0, 0));
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    & > .filter {
+      display: flex;
+      margin: 2px 0;
+      padding: 10px;
+      align-items: center;
+      & > input {
+        outline: none;
+        display: flex;
+        align-items: center;
+        height: 30px;
+        padding: 5px;
+        font-size: 1.1rem;
+      }
+      & > button {
+        @include button($width: 100px, $fs: 1rem);
+        border-radius: 5px;
+      }
+      &:hover {
+        background-color: rgba(207, 133, 41, 0.623);
+      }
+    }
+  }
+  &__add {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid rgba(179, 179, 179, 0.315);
+    padding-top: 20px;
+    & > form {
+      display: flex;
+      padding: 10px;
+      align-items: center;
+      & > input {
+        outline: none;
+        display: flex;
+        align-items: center;
+        height: 30px;
+        padding: 5px;
+        font-size: 1.1rem;
+      }
+      & > button {
+        @include button($width: 100px, $fs: 1rem);
+        border-radius: 5px;
+      }
+    }
+  }
+}

@@ -1,0 +1,367 @@
+.footer {
+  display: flex;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.13);
+  color: $color-dark;
+  display: flex;
+  color: $color-light;
+  &__filter {
+    @include bc-fone;
+  }
+  &__cont {
+    order: 1;
+    width: 100%;
+    height: 100%;
+    max-width: $max-width;
+    display: flex;
+    margin: 0 auto;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    padding: 100px var(--padding) 30px;
+    flex-direction: column;
+    & > p.rights {
+      display: flex;
+      justify-content: center;
+      margin: 40px 0 10px;
+      font-size: 1.3rem;
+      color: $color-light-grey;
+    }
+  }
+  &__title {
+    font-size: 2rem;
+    font-weight: 400;
+    color: $color-light;
+    margin-bottom: 70px;
+  }
+  &__body {
+    display: flex;
+    justify-content: flex-start;
+  }
+  &__contacts {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    & > div {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      & > .field {
+        margin: 10px 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        .field__title {
+          // text-transform: uppercase;
+          font-weight: 600;
+          color: $color-light;
+        }
+        .field__content {
+          font-weight: 300;
+          color: $color-light;
+        }
+      }
+    }
+
+    & .social {
+      margin-top: 20px;
+      width: 100%;
+      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+      & > a {
+        cursor: pointer;
+        margin: 10px 0;
+        position: relative;
+        list-style-type: none;
+        font-size: 14px;
+        line-height: 20px;
+        font-family: $ff;
+        font-weight: 700;
+        color: $color-light;
+      }
+      & > a:hover {
+        color: $color-light-hover;
+      }
+      & > a:active {
+        color: $color-light-active;
+      }
+      & > a:hover::after {
+        position: absolute;
+        content: "_";
+        display: flex;
+        right: -10px;
+        top: 0;
+        color: $color-light-hover;
+      }
+      & > a:active::after {
+        position: absolute;
+        content: "_";
+        display: flex;
+        right: -10px;
+        top: 0;
+        color: $color-light-active;
+      }
+    }
+  }
+  &__form {
+    order: 2;
+    display: flex;
+    flex-direction: column;
+    margin-left: 100px;
+    padding: 8px;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 41.66667%;
+    flex: 0 0 41.66667%;
+    max-width: 41.66667%;
+    & h4 {
+      font-size: 1.3rem;
+      line-height: 24px;
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+    & input {
+      margin-bottom: 20px;
+      width: 100%;
+      background-color: transparent;
+      border-radius: 3px;
+      border: 1px solid #fff;
+      padding: 10px;
+      color: #fff;
+      font-size: 16px;
+      line-height: 24px;
+      display: flex;
+      box-sizing: border-box;
+      &:focus {
+        box-shadow: inset 0 0 5px 0 #fff;
+        border: 1px solid #fff;
+      }
+    }
+    & textarea {
+      width: 100%;
+      background-color: transparent;
+      border-radius: 3px;
+      border: 1px solid #fff;
+      padding: 10px;
+      height: 115px;
+      color: #fff;
+      font-size: 16px;
+      line-height: 24px;
+      display: flex;
+      box-sizing: border-box;
+      &:focus {
+        box-shadow: inset 0 0 5px 0 #fff;
+        border: 1px solid #fff;
+      }
+    }
+    & button {
+      width: 100%;
+      margin-top: 20px;
+      background-color: transparent;
+      border-radius: 30px;
+      border: 1px solid #fff;
+      padding: 10px;
+      height: 60px;
+      color: #fff;
+      font-size: 16px;
+      line-height: 24px;
+      display: flex;
+      box-sizing: border-box;
+      justify-content: center;
+      align-items: center;
+      outline: none;
+      text-transform: uppercase;
+      @include bc-fone-rev;
+      &:hover {
+        border-color: gray;
+      }
+      &:active {
+        transform: scale(0.99);
+      }
+    }
+  }
+}
+
+@include mq(800px, max) {
+  .footer {
+    display: flex;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.13);
+    color: $color-dark;
+    display: flex;
+    color: $color-light;
+    &__filter {
+      @include bc-fone;
+    }
+    &__cont {
+      width: 100%;
+      height: 100%;
+      max-width: $max-width;
+      display: flex;
+      margin: 0 auto;
+      justify-content: flex-start;
+      box-sizing: border-box;
+      padding: 50px var(--padding) 30px;
+      flex-direction: column;
+      & > p.rights {
+        display: flex;
+        justify-content: flex-start;
+        margin: 40px 0 10px;
+        font-size: 1rem;
+        color: $color-light-grey;
+      }
+    }
+    &__title {
+      font-size: 2rem;
+      font-weight: 400;
+      color: $color-light;
+      margin-bottom: 40px;
+    }
+    &__body {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    &__contacts {
+      margin-top: 30px;
+      order: 2;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      & > div {
+        display: flex;
+        flex-direction: column;
+        & > .field {
+          margin: 10px 0;
+          width: 100%;
+          display: flex;
+          justify-content: start;
+          .field__title {
+            display: flex;
+            min-width: 100px;
+            font-weight: 600;
+            color: $color-light;
+          }
+          .field__content {
+            font-weight: 300;
+            color: $color-light;
+          }
+        }
+      }
+      & > .social {
+        margin-top: 0px;
+        padding-left:  10px;
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        & > a {
+          cursor: pointer;
+          margin: 10px 0;
+          position: relative;
+          list-style-type: none;
+          font-size: 14px;
+          line-height: 20px;
+          font-family: $ff;
+          font-weight: 700;
+          color: $color-light;
+        }
+        & > a:hover {
+          color: $color-light-hover;
+        }
+        & > a:active {
+          color: $color-light-active;
+        }
+        & > a:hover::after {
+          position: absolute;
+          content: "_";
+          display: flex;
+          right: -10px;
+          top: 0;
+          color: $color-light-hover;
+        }
+        & > a:active::after {
+          position: absolute;
+          content: "_";
+          display: flex;
+          right: -10px;
+          top: 0;
+          color: $color-light-active;
+        }
+      }
+    }
+    &__form {
+      order: 1;
+      display: flex;
+      flex-direction: column;
+      margin-left: 0;
+      padding: 8px;
+      -webkit-box-flex: 0;
+      -ms-flex: 0 0 100%;
+      flex: 0 0 100%;
+      max-width: 100%;
+      & h4 {
+        font-size: 1.3rem;
+        line-height: 24px;
+        font-weight: 300;
+        margin-bottom: 20px;
+      }
+      & input {
+        margin-bottom: 20px;
+        width: 100%;
+        background-color: transparent;
+        border-radius: 3px;
+        border: 1px solid #fff;
+        padding: 10px;
+        color: #fff;
+        font-size: 16px;
+        line-height: 24px;
+        display: flex;
+        box-sizing: border-box;
+        &:focus {
+          box-shadow: inset 0 0 5px 0 #fff;
+          border: 1px solid #fff;
+        }
+      }
+      & textarea {
+        width: 100%;
+        background-color: transparent;
+        border-radius: 3px;
+        border: 1px solid #fff;
+        padding: 10px;
+        height: 115px;
+        color: #fff;
+        font-size: 16px;
+        line-height: 24px;
+        display: flex;
+        box-sizing: border-box;
+        &:focus {
+          box-shadow: inset 0 0 5px 0 #fff;
+          border: 1px solid #fff;
+        }
+      }
+      & button {
+        width: 100%;
+        margin-top: 20px;
+        background-color: transparent;
+        border-radius: 5px;
+        border: 1px solid #fff;
+        padding: 10px;
+        height: 60px;
+        color: #fff;
+        font-size: 16px;
+        line-height: 24px;
+        display: flex;
+        box-sizing: border-box;
+        justify-content: center;
+        align-items: center;
+        outline: none;
+        text-transform: uppercase;
+        @include bc-fone-rev;
+        &:hover {
+          border-color: gray;
+        }
+        &:active {
+          transform: scale(0.99);
+        }
+      }
+    }
+  }
+}

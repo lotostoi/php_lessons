@@ -1,0 +1,159 @@
+@mixin mq($width, $type: min) {
+  @if $type==max {
+    $width: $width - 1px;
+  }
+  @media only screen and (#{$type}-width: $width) {
+    @content;
+  }
+}
+
+// pleceholder
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+// animations
+
+$time: 0.3s;
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes page-leave {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+}
+
+.page-leave {
+  animation: page-leave $time;
+}
+.page-enter {
+  animation: page-enter $time;
+}
+
+//shadows
+
+@mixin grayShadow {
+  & {
+    -webkit-box-shadow: 0px 0px 5px 0px rgb(80, 80, 80);
+    -moz-box-shadow: 0px 0px 5px 0px rgb(80, 80, 80);
+    box-shadow: 0px 0px 5px 0px rgb(80, 80, 80);
+  }
+}
+@mixin offShadow {
+  & {
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(80, 80, 80, 0);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(80, 80, 80, 0);
+    box-shadow: 0px 0px 5px 0px rgba(80, 80, 80, 0);
+  }
+}
+@mixin shadow($color: rgba(0, 0, 0, 0.75)) {
+  -webkit-box-shadow: 0px 0px 5px 0px $color;
+  -moz-box-shadow: 0px 0px 5px 0px $color;
+  box-shadow: 0px 0px 5px 0px $color;
+}
+@mixin shadow-bot($color: rgba(117, 117, 117, 1)) {
+  & {
+    -webkit-box-shadow: 10px 10px 5px -8px $color;
+    -moz-box-shadow: 10px 10px 5px -8px $color;
+    box-shadow: 10px 10px 5px -8px $color;
+  }
+}
+
+@mixin bc-fone {
+  & {
+    background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(1, 0, 0, 0.7987570028011204) 42%,
+        rgba(255, 98, 0, 0.6671043417366946) 100%
+      ),
+      url('../img/baner.jpg');
+  }
+}
+@mixin bc-fone-rev {
+  & {
+    background: rgb(5, 3, 0);
+    background: linear-gradient(
+        90deg,
+        rgba(5, 3, 0, 0.6671043417366946) 0%,
+        rgba(249, 128, 7, 0.7987570028011204) 0%,
+        rgba(1, 1, 0, 1) 100%
+      ),
+      url('../img/baner.jpg');
+  }
+}
+
+@mixin textIndent($value: 40px) {
+  & {
+    text-indent: $value;
+  }
+}
+@mixin firstLetter($text-size: 2.5rem, $color: $color-bright) {
+  &:first-letter {
+    font-size: $text-size;
+    color: $color;
+    font-weight: 800;
+  }
+}
+
+@mixin message($bk, $color) {
+  padding: 10px;
+  border-radius: 5px;
+  position: fixed;
+  top: 100px;
+  right: 30px;
+  opacity: 1;
+  transition: opacity 0.5s;
+  display: flex;
+  color: $color;
+  background-color: $bk;
+}
+
+@mixin button($width: 100px, $fs: 1rem) {
+  width: $width;
+  outline: none;
+  padding: 10px;
+  background-image: url('../img/fonforlittelelem.jpg');
+  background-size: contain;
+  background: rgb(0, 0, 0);
+  color: $color-light;
+  border: none;
+  @include grayShadow;
+  border-radius: 20px;
+  font-size: $fs;
+  @include bc-fone;
+  margin: 10px;
+  box-sizing: border-box;
+
+  &:hover {
+    @include bc-fone-rev;
+  }
+  &:active {
+    transform: scale(0.99);
+  }
+}

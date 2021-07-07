@@ -1,27 +1,28 @@
 <?php
-
+session_start();
 include_once "../config/config.php";
 
-$page =  isset($_GET['page']) ? $_GET['page'] : 'index';
+$url_array = explode('/', $_SERVER['REQUEST_URI']);
 
-switch ($page) {
-    case 'index':
-        $menu_params = ['menu' => $menu];
-        $content_params = ['title' => 'Главная'];
-        break;
-    case 'portfolio':
-        $menu_params = ['menu' => $menu];
-        $content_params = ['title' => 'Портфолио'];
-        break;
-    case 'Gallery/gallery':
-        $menu_params = ['menu' => $menu];
-        $content_params = ['title' => 'Домашняя работа'];
-        break;
+$page =  $url_array[1] !== '' ? $url_array[1] : 'index';
+$action = $url_array[2];
+
+if (strstr($page, '-')) {
+    $page = str_replace('-', '_', $page);
+}
+if (strstr($action, '?')) {
+    $action =  explode('?', $action)[0];
+}
+if (strstr($page, '?')) {
+    $page =  explode('?', $page)[0];
 }
 
-$fields = [
-    'header' => renderTemlate('header',  $menu_params),
-    'content' => renderTemlate($page, $content_params)
-];
+$nameControllers = $page;
 
-echo renderTemlate('layouts/main', $fields);
+if (function_exists($nameControllers)) {
+    $params = !empty($action) ? $nameControllers($action) : $nameControllers();
+} else {
+    exit(" Controller $nameControllers isn't");
+}
+
+renderPages($params);
